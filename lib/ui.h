@@ -1,7 +1,6 @@
 //
 // Created by mossnodie on 12/23/18.
 //
-
 #ifndef GAMES_SCORE_STATISTICS_UI_H
 #define GAMES_SCORE_STATISTICS_UI_H
 #include "stdhead.h"

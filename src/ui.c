@@ -2,7 +2,7 @@
 // Created by mossnodie on 12/23/18.
 //
 
-#include "../header/ui.h"
+#include "../lib/ui.h"
 
 static int u_len = DISPLAY_MAX_STRING_LENGTH;
 char * null_str = NULL_STR;
