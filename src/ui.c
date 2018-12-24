@@ -81,7 +81,7 @@ static void ui_print_str(ui _self,char * s) {
 
     if(!s) {
         s = _self.null_str;
-        _log.log_information = "出现空指针,请正确使用系统\0";
+        strcpy(_log.log_information , "出现空指针,请正确使用系统\0");
         notify(ERROR,_log.log_information);
     }
 
@@ -90,7 +90,7 @@ static void ui_print_str(ui _self,char * s) {
     if(!str_len) {
         s = _self.zero_str;
         str_len = str_length(s);
-        _log.log_information = "位置出现0串,请正确使用系统\0";
+        strcpy( _log.log_information , "位置出现0串,请正确使用系统\0");
         notify(WARN,_log.log_information);
     }else if(str_len > _self.u_len){
         s = _self.long_str;

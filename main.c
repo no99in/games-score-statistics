@@ -24,7 +24,7 @@ void uitest() {
     ui_print_unit_str(_ui,"\0");
     printf("\n");
 
-    ui_print_unit_str(_ui,"中北大学\0");
+    ui_print_unit_str(_ui,"NUC\0");
     printf("\n");
     ui_print_unit_str(_ui,"123asd3\0");
     printf("\n");
