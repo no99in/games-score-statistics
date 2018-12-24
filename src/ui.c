@@ -9,8 +9,12 @@ static int u_len = DISPLAY_MAX_STRING_LENGTH;
 char * null_str = NULL_STR;
 char * zero_str = ZERO_STR;
 char * long_str = LONG_STR;
+char * notice;
+
+int log_buffer_size = LOG_BUFFER_SIZE;
 
 int log_level = OFF;
+
 
 
 static int strlength(char * s){
@@ -52,6 +56,14 @@ static void notify(int log_level,char * notice){
 }
 
 extern void init() {
+
+    if(!log_buffer_size)
+        notice = (char *)malloc(sizeof(char)*log_buffer_size);
+    if(!notice)
+        exit(500);
+
+    notice = "UI界面初始化成功\0";
+    notify(INFO,notice);
 
 }
 

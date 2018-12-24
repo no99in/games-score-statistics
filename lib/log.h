@@ -6,6 +6,8 @@
 
 #include "stdhead.h"
 
+#define LOG_BUFFER_SIZE 100;
+
 #define  OFF     0
 #define  INFO    1
 #define  WARN    2
