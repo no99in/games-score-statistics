@@ -8,6 +8,8 @@ static int u_len = DISPLAY_MAX_STRING_LENGTH;
 char * null_str = NULL_STR;
 char * zero_str = ZERO_STR;
 char * long_str = LONG_STR;
+int log_level = LOG_LEVEL;
+
 
 static int strlength(char * s){
 
@@ -41,6 +43,13 @@ static int strlength(char * s){
 
 }
 
+static void notify(){
+//    if(log_level == "");
+}
+
+extern void init() {
+
+}
 
 
 extern void printstr(char * s) {
@@ -78,6 +87,7 @@ extern void printstr(char * s) {
 
 }
 extern void printunintystr(char * s) {
+
     printf("|");
     printstr(s);
     printf("|");
