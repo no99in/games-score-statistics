@@ -4,18 +4,23 @@
 
 #include "../lib/ui.h"
 
-static int u_len = DISPLAY_MAX_STRING_LENGTH;
-
-char * null_str = NULL_STR;
-char * zero_str = ZERO_STR;
-char * long_str = LONG_STR;
-char * notice;
-
-int log_buffer_size = LOG_BUFFER_SIZE;
-
-int log_level = OFF;
 
 
+extern void ui_init(ui * self) {
+
+    // 开辟ui
+    ui * _self = (pui)malloc(sizeof(ui));
+
+    // 初始化
+    _self->long_str = LONG_STR;
+    _self->null_str = NULL_STR;
+    _self->zero_str = ZERO_STR;
+    _self->u_len = DISPLAY_MAX_STRING_LENGTH;
+    _self->log_level = OFF;
+
+    *self = *_self;
+
+}
 
 static int strlength(char * s){
 
@@ -51,39 +56,28 @@ static int strlength(char * s){
 
 static void notify(int log_level,char * notice){
 
-    update(log_level,notice);
-
-}
-
-extern void init() {
-
-    if(!log_buffer_size)
-        notice = (char *)malloc(sizeof(char)*log_buffer_size);
-    if(!notice)
-        exit(500);
-
-    notice = "UI界面初始化成功\0";
-    notify(INFO,notice);
 
 }
 
 
-extern void printstr(char * s) {
 
-    if(!s) s = null_str;
+
+extern void ui_print_str(ui _self,char * s) {
+
+    if(!s) s = _self.null_str;
 
     int str_len = strlength(s);
     //printf("%d",str_len);
     if(!str_len) {
-        s = zero_str;
+        s = _self.zero_str;
         str_len = strlength(s);
-    }else if(str_len > u_len){
-        s = long_str;
+    }else if(str_len > _self.u_len){
+        s = _self.long_str;
         str_len = strlength(s);
     }
 
-    int flag_u_bnk_len_dcl = (u_len - str_len) % 2?1:0;
-    int u_bnk_len = (u_len - str_len) / 2;
+    int flag_u_bnk_len_dcl = (_self.u_len - str_len) % 2?1:0;
+    int u_bnk_len = (_self.u_len - str_len) / 2;
 
     int l_bak_len = u_bnk_len;
     while(l_bak_len > 0) {
@@ -102,10 +96,10 @@ extern void printstr(char * s) {
     }
 
 }
-extern void printunintystr(char * s) {
+extern void ui_print_unit_str(ui _self,char * s) {
 
     printf("|");
-    printstr(s);
+    ui_print_str(_self,s);
     printf("|");
 }
 

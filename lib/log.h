@@ -3,7 +3,7 @@
 //
 
 #ifndef GAMES_SCORE_STATISTICS_LOG_H
-
+#define GAMES_SCORE_STATISTICS_LOG_H
 #include "stdhead.h"
 
 #define LOG_BUFFER_SIZE 100;
@@ -13,10 +13,8 @@
 #define  WARN    2
 #define  ERROR   3
 
-
-
 extern  void update(int level,char * s);
 
-#define GAMES_SCORE_STATISTICS_LOG_H
+
 
 #endif //GAMES_SCORE_STATISTICS_LOG_H
