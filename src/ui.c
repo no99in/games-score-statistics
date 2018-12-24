@@ -5,10 +5,12 @@
 #include "../lib/ui.h"
 
 static int u_len = DISPLAY_MAX_STRING_LENGTH;
+
 char * null_str = NULL_STR;
 char * zero_str = ZERO_STR;
 char * long_str = LONG_STR;
-int log_level = LOG_LEVEL;
+
+int log_level = OFF;
 
 
 static int strlength(char * s){
@@ -43,8 +45,10 @@ static int strlength(char * s){
 
 }
 
-static void notify(){
-//    if(log_level == "");
+static void notify(int log_level,char * notice){
+
+    update(log_level,notice);
+
 }
 
 extern void init() {

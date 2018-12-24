@@ -9,11 +9,9 @@
 #define NULL_STR "空值\0"
 #define LONG_STR "长串\0"
 
-#define LOG_LEVEL INFO
-
 extern void init();
 extern void printunintystr(char * s);
 extern void printstr(char * s);
 static int strlength(char * s);
-static void notify();
+static void notify(int log_level,char * notice);
 #endif //GAMES_SCORE_STATISTICS_UI_H

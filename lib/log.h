@@ -6,13 +6,14 @@
 
 #include "stdhead.h"
 
-#define INFO 1
-#define WARN 2
-#define ERROR 3
+#define  OFF     0
+#define  INFO    1
+#define  WARN    2
+#define  ERROR   3
 
 
 
-extern  void update();
+extern  void update(int level,char * s);
 
 #define GAMES_SCORE_STATISTICS_LOG_H
 
