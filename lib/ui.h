@@ -22,7 +22,7 @@ static int strlength(char * s);
 static void notify(int log_level,char * notice);
 
 
-extern void       ui_init(ui * self);
+extern void       new_ui(ui * self);
 extern void       ui_print_unit_str(ui _self,char * s);
 extern void       ui_print_str(ui _self,char * s);
 

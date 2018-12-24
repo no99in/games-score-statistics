@@ -14,7 +14,7 @@ void uitest() {
 
     ui _ui;
 
-    ui_init(&_ui);
+    new_ui(&_ui);
 
     ui_print_unit_str(_ui,"中北大学\0");
     printf("\n");

@@ -6,7 +6,7 @@
 
 
 
-extern void ui_init(ui * self) {
+extern void new_ui(ui * self) {
 
     // 开辟ui
     ui * _self = (pui)malloc(sizeof(ui));
