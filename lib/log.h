@@ -16,7 +16,7 @@ static char * log_information;
 #define  ERROR   3
 
 extern void new_log();
-extern  void update(int level,char * s);
+extern void update(int level,char * s);
 
 
 

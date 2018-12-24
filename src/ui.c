@@ -72,10 +72,7 @@ static void notify(int log_level,char * notice){
     update(log_level,log_information);
 }
 
-
-
-
-extern void ui_print_str(ui _self,char * s) {
+static void ui_print_str(ui _self,char * s) {
 
     if(!s) {
         s = _self.null_str;
@@ -122,5 +119,6 @@ extern void ui_print_unit_str(ui _self,char * s) {
     printf("|");
     ui_print_str(_self,s);
     printf("|");
+
 }
 
