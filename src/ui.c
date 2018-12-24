@@ -4,19 +4,23 @@
 
 #include "../lib/ui.h"
 
-ui * instance = NULL;
+ui * ui_instance = NULL;
 
 extern ui get_ui_instance(){
-    if(!instance)
-        new_ui(instance);
-    return *instance;
+    if(!ui_instance)
+        new_ui(ui_instance);
+    return *ui_instance;
 }
 
 extern void new_ui(ui * self) {
 
     // 开辟ui
     ui * _self = (pui)malloc(sizeof(ui));
-
+    if(!_self) {
+        log_information = "UI界面初始化失败,错误代码(500)!\0";
+        notify(ERROR,log_information);
+        exit(500);
+    }
     // 初始化
     _self->long_str = LONG_STR;
     _self->null_str = NULL_STR;
@@ -24,11 +28,11 @@ extern void new_ui(ui * self) {
     _self->u_len = DISPLAY_MAX_STRING_LENGTH;
 
     *self = *_self;
-    instance = _self;
+    ui_instance = _self;
 
     log_information  = "UI界面初始化完成!\0";
 
-    update(INFO,log_information);
+    notify(INFO,log_information);
 
 }
 
@@ -36,16 +40,16 @@ static int str_length(char * s){
 
     int res = 0;
     double flag_cn_op = 0.0;
-    char * strp = s;
-    while(*strp!='\0'){
+    char * str_p = s;
+    while(*str_p!='\0'){
 
-        if(*strp >= 'A' && *strp <= 'Z')
+        if(*str_p >= 'A' && *str_p <= 'Z')
             res += 1;
-        else if(*strp >= 'a' && *strp <= 'z')
+        else if(*str_p >= 'a' && *str_p <= 'z')
             res += 1;
-        else if(*strp >= '0' && *strp <= '9')
+        else if(*str_p >= '0' && *str_p <= '9')
             res += 1;
-        else if(*strp == ' ')
+        else if(*str_p == ' ')
             res += 1;
         else {
 
@@ -58,15 +62,14 @@ static int str_length(char * s){
 
 
         }
-        ++strp;
+        ++str_p;
     }
     return res;
 
 }
 
 static void notify(int log_level,char * notice){
-
-
+    update(log_level,log_information);
 }
 
 
@@ -74,16 +77,24 @@ static void notify(int log_level,char * notice){
 
 extern void ui_print_str(ui _self,char * s) {
 
-    if(!s) s = _self.null_str;
+    if(!s) {
+        s = _self.null_str;
+        log_information = "出现空指针,请正确使用系统\0";
+        notify(ERROR,log_information);
+    }
 
     int str_len = str_length(s);
-    //printf("%d",str_len);
+
     if(!str_len) {
         s = _self.zero_str;
         str_len = str_length(s);
+        log_information = "位置出现0串,请正确使用系统\0";
+        notify(ERROR,log_information);
     }else if(str_len > _self.u_len){
         s = _self.long_str;
         str_len = str_length(s);
+        log_information = "位置出现长度过长的子串,请正确使用系统\0";
+        notify(ERROR,log_information);
     }
 
     int flag_u_bnk_len_dcl = (_self.u_len - str_len) % 2?1:0;
