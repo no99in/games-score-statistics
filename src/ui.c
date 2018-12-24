@@ -27,7 +27,6 @@ extern void new_ui(ui * self) {
     _self->long_str = LONG_STR;
     _self->null_str = NULL_STR;
     _self->zero_str = ZERO_STR;
-    _self->u_len = DISPLAY_MAX_STRING_LENGTH;
 
     *self = *_self;
     ui_instance = _self;
@@ -70,12 +69,12 @@ static int str_length(char * s){
 
 }
 
-static void notify(int log_level,char * notice){
 
-    log_update(log_level, notice);
-}
 
-static void ui_print_str(ui _self,char * s) {
+
+
+
+static void ui_print_str(ui _self,char * s,int max_length) {
 
     log _log = get_log_instance();
 
@@ -92,15 +91,15 @@ static void ui_print_str(ui _self,char * s) {
         str_len = str_length(s);
         strcpy( _log.log_information , "位置出现0串,请正确使用系统\0");
         notify(WARN,_log.log_information);
-    }else if(str_len > _self.u_len){
+    }else if(str_len > max_length){
         s = _self.long_str;
         str_len = str_length(s);
-        _log.log_information = "位置出现长度过长的子串,请正确使用系统\0";
+        strcpy(_log.log_information , "位置出现长度过长的子串,请正确使用系统\0");
         notify(WARN,_log.log_information);
     }
 
-    int flag_u_bnk_len_dcl = (_self.u_len - str_len) % 2?1:0;
-    int u_bnk_len = (_self.u_len - str_len) / 2;
+    int flag_u_bnk_len_dcl = (max_length - str_len) % 2?1:0;
+    int u_bnk_len = (max_length - str_len) / 2;
 
     int l_bak_len = u_bnk_len;
     while(l_bak_len > 0) {
@@ -119,11 +118,32 @@ static void ui_print_str(ui _self,char * s) {
     }
 
 }
-extern void ui_print_unit_str(ui _self,char * s) {
 
-    printf("|");
-    ui_print_str(_self,s);
-    printf("|");
 
+extern void ui_print_head(ui _self){
+    int i = 40;
+    while(i--){
+        printf("-");
+    }
+    printf("\n");
+    printf("|");
+    ui_print_str(_self,"运 动 会 分 数 统 计 系 统\0",38);
+    printf("|");
+    printf("\n");
+    i = 40;
+    while(i--){
+        printf("-");
+    }
+    printf("\n");
 }
+
+
+
+
+
+static void notify(int log_level,char * notice){
+
+    log_update(log_level, notice);
+}
+
 
