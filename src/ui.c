@@ -16,9 +16,11 @@ extern void new_ui(ui * self) {
 
     // 开辟ui
     ui * _self = (pui)malloc(sizeof(ui));
+    log _log = get_log_instance();
     if(!_self) {
-        log_information = "UI界面初始化失败,错误代码(500)!\0";
-        notify(ERROR,log_information);
+
+        _log.log_information = "UI界面初始化失败,错误代码(500)!\0";
+        notify(ERROR,_log.log_information);
         exit(500);
     }
     // 初始化
@@ -30,9 +32,9 @@ extern void new_ui(ui * self) {
     *self = *_self;
     ui_instance = _self;
 
-    log_information  = "UI界面初始化完成!\0";
+    _log.log_information  = "UI界面初始化完成!\0";
 
-    notify(INFO,log_information);
+    notify(INFO,_log.log_information);
 
 }
 
@@ -69,15 +71,18 @@ static int str_length(char * s){
 }
 
 static void notify(int log_level,char * notice){
-    update(log_level,log_information);
+
+    log_update(log_level, notice);
 }
 
 static void ui_print_str(ui _self,char * s) {
 
+    log _log = get_log_instance();
+
     if(!s) {
         s = _self.null_str;
-        log_information = "出现空指针,请正确使用系统\0";
-        notify(ERROR,log_information);
+        _log.log_information = "出现空指针,请正确使用系统\0";
+        notify(ERROR,_log.log_information);
     }
 
     int str_len = str_length(s);
@@ -85,13 +90,13 @@ static void ui_print_str(ui _self,char * s) {
     if(!str_len) {
         s = _self.zero_str;
         str_len = str_length(s);
-        log_information = "位置出现0串,请正确使用系统\0";
-        notify(ERROR,log_information);
+        _log.log_information = "位置出现0串,请正确使用系统\0";
+        notify(WARN,_log.log_information);
     }else if(str_len > _self.u_len){
         s = _self.long_str;
         str_len = str_length(s);
-        log_information = "位置出现长度过长的子串,请正确使用系统\0";
-        notify(ERROR,log_information);
+        _log.log_information = "位置出现长度过长的子串,请正确使用系统\0";
+        notify(WARN,_log.log_information);
     }
 
     int flag_u_bnk_len_dcl = (_self.u_len - str_len) % 2?1:0;
