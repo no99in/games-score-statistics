@@ -4,7 +4,13 @@
 
 #include "../lib/ui.h"
 
+ui * __self = NULL;
 
+extern ui getInstance(){
+    if(!__self)
+        new_ui(__self);
+    return *__self;
+}
 
 extern void new_ui(ui * self) {
 
@@ -19,6 +25,7 @@ extern void new_ui(ui * self) {
     _self->log_level = OFF;
 
     *self = *_self;
+    __self = _self;
 
 }
 

@@ -3,6 +3,8 @@
 void uitest();
 
 int main() {
+    ui ui;
+    new_ui(&ui);
     uitest();
     system("");
     return 0;
@@ -12,10 +14,7 @@ int main() {
 
 void uitest() {
 
-    ui _ui;
-
-    new_ui(&_ui);
-
+    ui _ui = getInstance();
     ui_print_unit_str(_ui,"中北大学\0");
     printf("\n");
     ui_print_unit_str(_ui,"123asd3\0");

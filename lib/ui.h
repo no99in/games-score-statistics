@@ -10,20 +10,20 @@
 #define LONG_STR "长串\0"
 
 typedef struct ui{
-    int u_len;
-    int log_level;
+    int    init_flag;
+    int    u_len;
+    int    log_level;
     char * null_str;
     char * zero_str;
     char * long_str;
-
 }ui,* pui;
 
-static int strlength(char * s);
-static void notify(int log_level,char * notice);
+static int   strlength(char * s);
+static void  notify(int log_level,char * notice);
 
-
-extern void       new_ui(ui * self);
-extern void       ui_print_unit_str(ui _self,char * s);
-extern void       ui_print_str(ui _self,char * s);
+extern ui    getInstance();
+extern void  new_ui(ui * self);
+extern void  ui_print_unit_str(ui _self,char * s);
+extern void  ui_print_str(ui _self,char * s);
 
 #endif //GAMES_SCORE_STATISTICS_UI_H
