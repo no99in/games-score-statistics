@@ -3,10 +3,14 @@
 void uitest();
 
 int main() {
+    //  系统日志
+    new_log();
+    // ui界面构建
     ui ui;
     new_ui(&ui);
+    // 单元测试
     uitest();
-    system("");
+
     return 0;
 }
 
@@ -14,7 +18,7 @@ int main() {
 
 void uitest() {
 
-    ui _ui = getInstance();
+    ui _ui = get_ui_instance();
     ui_print_unit_str(_ui,"中北大学\0");
     printf("\n");
     ui_print_unit_str(_ui,"123asd3\0");

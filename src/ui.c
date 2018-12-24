@@ -4,12 +4,12 @@
 
 #include "../lib/ui.h"
 
-ui * __self = NULL;
+ui * instance = NULL;
 
-extern ui getInstance(){
-    if(!__self)
-        new_ui(__self);
-    return *__self;
+extern ui get_ui_instance(){
+    if(!instance)
+        new_ui(instance);
+    return *instance;
 }
 
 extern void new_ui(ui * self) {
@@ -22,14 +22,17 @@ extern void new_ui(ui * self) {
     _self->null_str = NULL_STR;
     _self->zero_str = ZERO_STR;
     _self->u_len = DISPLAY_MAX_STRING_LENGTH;
-    _self->log_level = OFF;
 
     *self = *_self;
-    __self = _self;
+    instance = _self;
+
+    log_information  = "UI界面初始化完成!\0";
+
+    update(INFO,log_information);
 
 }
 
-static int strlength(char * s){
+static int str_length(char * s){
 
     int res = 0;
     double flag_cn_op = 0.0;
@@ -73,14 +76,14 @@ extern void ui_print_str(ui _self,char * s) {
 
     if(!s) s = _self.null_str;
 
-    int str_len = strlength(s);
+    int str_len = str_length(s);
     //printf("%d",str_len);
     if(!str_len) {
         s = _self.zero_str;
-        str_len = strlength(s);
+        str_len = str_length(s);
     }else if(str_len > _self.u_len){
         s = _self.long_str;
-        str_len = strlength(s);
+        str_len = str_length(s);
     }
 
     int flag_u_bnk_len_dcl = (_self.u_len - str_len) % 2?1:0;
