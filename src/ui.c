@@ -158,15 +158,6 @@ void ui_print_fun(ui _self,int length){
     printf("\n");
 }
 
-
-
-
-
-void notify(int log_level,char * notice){
-
-    log_update(log_level, notice);
-}
-
 void ui_print_point(ui _self) {
 
     printf("%c",_self.point);
@@ -180,5 +171,20 @@ void ui_print_line(ui _self,int length) {
 
 }
 
+void ui_print_custom(ui _self,char * custom_str,int length){
 
+    printf("|");
+    ui_print_str(_self,"运 动 会 分 数 统 计 系 统\0",38);
+    printf("|");
+    printf("\n");
+    ui_print_point(_self);
+    ui_print_line(_self,length-2);
+    ui_print_point(_self);
+    printf("\n");
 
+}
+
+void notify(int log_level,char * notice){
+
+    log_update(log_level, notice);
+}

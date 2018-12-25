@@ -9,6 +9,7 @@
 #define NULL_STR "空值\0"
 #define LONG_STR "长串\0"
 
+
 #define POINT    '+'
 #define LINE     '-'
 
@@ -25,24 +26,67 @@ static void  notify(int log_level,char * notice);
 static void  ui_print_str(ui _self,char * s,int max_length);
 static void  ui_print_point(ui _self);
 static void  ui_print_line(ui _self,int length);
+
+
+
+
+
 /**
  * @desc   获取ui实例,保证全局只有一个ui实例
  * @param  无
  * @return ui实例
  */
 extern ui    get_ui_instance();
+
+
+
+
+
 /**
  * @desc   初始化一个ui实例
  * @param  待初始化的ui声明
  * @return 无
  */
 extern void  new_ui(ui * self);
+
+
+
+
+
+
 /**
- * @desc   打印 | 中北大学 | 在DISPLAY_MAX_STRING_LENGTH设置宽度
- * @param  {ui,待打印字符串的s}
- * @return 无
+ * @desc  print
+ *+-------------------------------------+
+ *|             T I T L E               |
+ *+-------------------------------------+
+ * @param  ui  ui_instance,
+ * @param  int length
+ * @return void
  */
 extern void  ui_print_head(ui _self,int length);
 
+
+/**
+ * @desc  print
+ *|           F U N S T R               |
+ *+-------------------------------------+
+ * @param  ui  ui_instance
+ * @param  int length
+ * @return void
+ */
 extern void ui_print_fun(ui _self,int length);
+
+
+/**
+* @desc  print
+*|           C U S T O M               |
+*+-------------------------------------+
+* @param  ui     ui_instance
+* @param  char * custom_str
+* @param  int    length
+* @return void
+*/
+extern void ui_print_custom(ui _self,char * custom_str,int length);
 #endif //GAMES_SCORE_STATISTICS_UI_H
+
+
