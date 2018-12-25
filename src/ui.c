@@ -6,13 +6,14 @@
 
 ui * ui_instance = NULL;
 
+
 extern ui get_ui_instance(){
     if(!ui_instance)
         new_ui(ui_instance);
     return *ui_instance;
 }
 
-extern void new_ui(ui * self) {
+void new_ui(ui * self) {
 
     // 开辟ui
     ui * _self = (pui)malloc(sizeof(ui));
@@ -23,10 +24,13 @@ extern void new_ui(ui * self) {
         notify(ERROR,_log.log_information);
         exit(500);
     }
+
     // 初始化
     _self->long_str = LONG_STR;
     _self->null_str = NULL_STR;
     _self->zero_str = ZERO_STR;
+    _self->point = POINT;
+    _self->line = LINE;
 
     *self = *_self;
     ui_instance = _self;
@@ -37,7 +41,8 @@ extern void new_ui(ui * self) {
 
 }
 
-static int str_length(char * s){
+
+int str_length(char * s){
 
     int res = 0;
     double flag_cn_op = 0.0;
@@ -74,7 +79,7 @@ static int str_length(char * s){
 
 
 
-static void ui_print_str(ui _self,char * s,int max_length) {
+void ui_print_str(ui _self,char * s,int max_length) {
 
     log _log = get_log_instance();
 
@@ -120,20 +125,31 @@ static void ui_print_str(ui _self,char * s,int max_length) {
 }
 
 
-extern void ui_print_head(ui _self){
-    int i = 40;
-    while(i--){
-        printf("-");
-    }
+void ui_print_head(ui _self,int length){
+    ui_print_point(_self);
+    ui_print_line(_self,length-2);
+    ui_print_point(_self);
     printf("\n");
     printf("|");
     ui_print_str(_self,"运 动 会 分 数 统 计 系 统\0",38);
     printf("|");
     printf("\n");
-    i = 40;
-    while(i--){
-        printf("-");
-    }
+    ui_print_point(_self);
+    ui_print_line(_self,length-2);
+    ui_print_point(_self);
+    printf("\n");
+}
+
+void ui_print_fun(ui _self,int length){
+
+
+    printf("|");
+    ui_print_str(_self,"运 动 会 分 数 统 计 系 统\0",38);
+    printf("|");
+    printf("\n");
+    ui_print_point(_self);
+    ui_print_line(_self,length-2);
+    ui_print_point(_self);
     printf("\n");
 }
 
@@ -141,9 +157,23 @@ extern void ui_print_head(ui _self){
 
 
 
-static void notify(int log_level,char * notice){
+void notify(int log_level,char * notice){
 
     log_update(log_level, notice);
 }
+
+void ui_print_point(ui _self) {
+
+    printf("%c",_self.point);
+
+}
+
+void ui_print_line(ui _self,int length) {
+
+    while(length--)
+        printf("%c",_self.line);
+
+}
+
 
 

@@ -22,8 +22,8 @@ void uitest() {
 
     ui _ui = get_ui_instance();
 
-    ui_print_head(_ui);
-
+    ui_print_head(_ui,40);
+    ui_print_fun(_ui,40);
 
 }
 
