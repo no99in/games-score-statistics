@@ -6,6 +6,7 @@ int main() {
     //  系统日志
     log log;
     new_log(&log);
+
     // ui界面构建
     ui ui;
     new_ui(&ui);
@@ -13,6 +14,7 @@ int main() {
     // 单元测试
     uitest();
 
+    system("clear");
     return 0;
 }
 

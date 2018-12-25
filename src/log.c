@@ -6,13 +6,13 @@
 
 log * log_instance = NULL;
 
-extern log get_log_instance(){
+log get_log_instance(){
     if(!log_instance)
         new_log(log_instance);
     return *log_instance;
 }
 
-extern void new_log(log * _self){
+void new_log(log * _self){
 
     log * self = (plog)malloc(sizeof(log));
 
@@ -24,7 +24,7 @@ extern void new_log(log * _self){
 
 }
 
-extern  void log_update(int level, char *s){
+void log_update(int level, char *s){
     switch (level){
         case 0:
             break;

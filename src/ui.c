@@ -7,15 +7,20 @@
 ui * ui_instance = NULL;
 
 
+// singleton pattern model
 extern ui get_ui_instance(){
+
     if(!ui_instance)
         new_ui(ui_instance);
+
     return *ui_instance;
+
 }
 
+// ui construct
 void new_ui(ui * self) {
 
-    // 开辟ui
+    // malloc
     ui * _self = (pui)malloc(sizeof(ui));
     log _log = get_log_instance();
     if(!_self) {
@@ -25,7 +30,7 @@ void new_ui(ui * self) {
         exit(500);
     }
 
-    // 初始化
+    // init
     _self->long_str = LONG_STR;
     _self->null_str = NULL_STR;
     _self->zero_str = ZERO_STR;
@@ -41,7 +46,8 @@ void new_ui(ui * self) {
 
 }
 
-
+// reload the function strlen() in that chinese character take up three lengths,in fact the
+// character width only take up two units;
 int str_length(char * s){
 
     int res = 0;
@@ -66,7 +72,6 @@ int str_length(char * s){
                 flag_cn_op = 0;
             }
 
-
         }
         ++str_p;
     }
@@ -78,7 +83,7 @@ int str_length(char * s){
 
 
 
-
+//
 void ui_print_str(ui _self,char * s,int max_length) {
 
     log _log = get_log_instance();
