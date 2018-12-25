@@ -3,13 +3,14 @@
 //
 #ifndef GAMES_SCORE_STATISTICS_UI_H
 #define GAMES_SCORE_STATISTICS_UI_H
-#include "log.h"
+#include "../ui_setting.h"
+#include "../lib/log.h"
 
 #define ZERO_STR "空串\0"
 #define NULL_STR "空值\0"
 #define LONG_STR "长串\0"
 
-
+#define DIV      '|'
 #define POINT    '+'
 #define LINE     '-'
 
@@ -19,6 +20,7 @@ typedef struct ui{
     char * long_str;
     char  point;
     char  line;
+    char  div;
 }ui,* pui;
 
 static int   str_length(char * s);
@@ -27,12 +29,6 @@ static void  ui_print_str(ui _self,char * s,int max_length);
 static void  ui_print_point(ui _self);
 static void  ui_print_div(ui _self);
 static void  ui_print_line(ui _self,int length);
-
-
-
-
-
-
 
 
 

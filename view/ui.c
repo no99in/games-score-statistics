@@ -2,7 +2,7 @@
 // Created by mossnodie on 12/23/18.
 //
 
-#include "../lib/ui.h"
+#include "ui.h"
 
 /* static */
 
@@ -35,8 +35,9 @@ void new_ui(ui * self) {
     _self->long_str = LONG_STR;
     _self->null_str = NULL_STR;
     _self->zero_str = ZERO_STR;
-    _self->point = POINT;
-    _self->line = LINE;
+    _self->point    = POINT;
+    _self->line     = LINE;
+    _self->div      = DIV;
 
     *self = *_self;
     ui_instance = _self;
@@ -144,8 +145,7 @@ void ui_print_line(ui _self,int length) {
 // print | ...
 void ui_print_div(ui _self) {
 
-    while(length--)
-        printf("%c",_self.div);
+    printf("%c",_self.div);
 
 }
 
@@ -158,9 +158,9 @@ void ui_print_head(ui _self,int length){
     ui_print_line(_self,length-2);
     ui_print_point(_self);
     printf("\n");
-    printf("|");
-    ui_print_str(_self,"运 动 会 分 数 统 计 系 统\0",38);
-    printf("|");
+    ui_print_div(_self);
+    ui_print_str(_self,TITLE,38);
+    ui_print_div(_self);
     printf("\n");
     ui_print_point(_self);
     ui_print_line(_self,length-2);
@@ -171,9 +171,9 @@ void ui_print_head(ui _self,int length){
 void ui_print_fun(ui _self,int length){
 
 
-    printf("|");
-    ui_print_str(_self,"运 动 会 分 数 统 计 系 统\0",38);
-    printf("|");
+    ui_print_div(_self);
+    ui_print_str(_self,TITLE,length-2);
+    ui_print_div(_self);
     printf("\n");
     ui_print_point(_self);
     ui_print_line(_self,length-2);
@@ -183,9 +183,9 @@ void ui_print_fun(ui _self,int length){
 
 void ui_print_custom(ui _self,char * custom_str,int length){
 
-    printf("|");
-    ui_print_str(_self,"运 动 会 分 数 统 计 系 统\0",38);
-    printf("|");
+    ui_print_div(_self);
+    ui_print_str(_self,custom_str,length-2);
+    ui_print_div(_self);
     printf("\n");
     ui_print_point(_self);
     ui_print_line(_self,length-2);

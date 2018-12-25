@@ -1,6 +1,6 @@
-#include "lib/ui.h"
+#include "view/ui.h"
 
-void uitest();
+void ui_test();
 
 int main() {
     //  系统日志
@@ -12,7 +12,7 @@ int main() {
     new_ui(&ui);
 
     // 单元测试
-    uitest();
+    ui_test();
 
     system("clear");
     return 0;
@@ -20,13 +20,17 @@ int main() {
 
 
 
-void uitest() {
+void ui_test() {
 
     ui _ui = get_ui_instance();
     int display_width = 40;
+
     ui_print_head(_ui,display_width);
-    ui_print_fun(_ui,display_width);
-    ui_print_custom(_ui,"你好呀小朋友",display_width);
+
+    ui_print_custom(_ui,FUN1_DESC,display_width);
+    ui_print_custom(_ui,FUN2_DESC,display_width);
+    ui_print_custom(_ui,FUN3_DESC,display_width);
+    ui_print_custom(_ui,FUN4_DESC,display_width);
 
 }
 
