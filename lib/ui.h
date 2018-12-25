@@ -25,18 +25,14 @@ static int   str_length(char * s);
 static void  notify(int log_level,char * notice);
 static void  ui_print_str(ui _self,char * s,int max_length);
 static void  ui_print_point(ui _self);
+static void  ui_print_div(ui _self);
 static void  ui_print_line(ui _self,int length);
 
 
 
 
 
-/**
- * @desc   获取ui实例,保证全局只有一个ui实例
- * @param  无
- * @return ui实例
- */
-extern ui    get_ui_instance();
+
 
 
 
@@ -50,7 +46,12 @@ extern ui    get_ui_instance();
 extern void  new_ui(ui * self);
 
 
-
+/**
+ * @desc   获取ui实例,保证全局只有一个ui实例
+ * @param  无
+ * @return ui实例
+ */
+extern ui    get_ui_instance();
 
 
 
@@ -78,13 +79,13 @@ extern void ui_print_fun(ui _self,int length);
 
 
 /**
-* @desc  print
-*|           C U S T O M               |
-*+-------------------------------------+
-* @param  ui     ui_instance
-* @param  char * custom_str
-* @param  int    length
-* @return void
+ * @desc  print
+ *|           C U S T O M               |
+ *+-------------------------------------+
+ * @param  ui     ui_instance
+ * @param  char * custom_str
+ * @param  int    length
+ * @return void
 */
 extern void ui_print_custom(ui _self,char * custom_str,int length);
 #endif //GAMES_SCORE_STATISTICS_UI_H

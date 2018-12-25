@@ -23,9 +23,10 @@ int main() {
 void uitest() {
 
     ui _ui = get_ui_instance();
-
-    ui_print_head(_ui,40);
-    ui_print_fun(_ui,40);
+    int display_width = 40;
+    ui_print_head(_ui,display_width);
+    ui_print_fun(_ui,display_width);
+    ui_print_custom(_ui,"你好呀小朋友",display_width);
 
 }
 

@@ -4,8 +4,9 @@
 
 #include "../lib/ui.h"
 
-ui * ui_instance = NULL;
+/* static */
 
+ui * ui_instance = NULL;
 
 // singleton pattern model
 extern ui get_ui_instance(){
@@ -46,8 +47,8 @@ void new_ui(ui * self) {
 
 }
 
-// reload the function strlen() in that chinese character take up three lengths,in fact the
-// character width only take up two units;
+// reload the function strlen() in that chinese character take up three lengths
+// in fact the character width only take up two units;
 int str_length(char * s){
 
     int res = 0;
@@ -79,11 +80,7 @@ int str_length(char * s){
 
 }
 
-
-
-
-
-//
+// print ==> |    |str|    |<-max_length
 void ui_print_str(ui _self,char * s,int max_length) {
 
     log _log = get_log_instance();
@@ -129,6 +126,32 @@ void ui_print_str(ui _self,char * s,int max_length) {
 
 }
 
+// print +,~,*,^ ...
+void ui_print_point(ui _self) {
+
+    printf("%c",_self.point);
+
+}
+
+// print - ...
+void ui_print_line(ui _self,int length) {
+
+    while(length--)
+        printf("%c",_self.line);
+
+}
+
+// print | ...
+void ui_print_div(ui _self) {
+
+    while(length--)
+        printf("%c",_self.div);
+
+}
+
+/* !static */
+
+/* extern */
 
 void ui_print_head(ui _self,int length){
     ui_print_point(_self);
@@ -158,19 +181,6 @@ void ui_print_fun(ui _self,int length){
     printf("\n");
 }
 
-void ui_print_point(ui _self) {
-
-    printf("%c",_self.point);
-
-}
-
-void ui_print_line(ui _self,int length) {
-
-    while(length--)
-        printf("%c",_self.line);
-
-}
-
 void ui_print_custom(ui _self,char * custom_str,int length){
 
     printf("|");
@@ -184,7 +194,13 @@ void ui_print_custom(ui _self,char * custom_str,int length){
 
 }
 
+/* !extern */
+
+/* interface */
+
 void notify(int log_level,char * notice){
 
     log_update(log_level, notice);
 }
+
+/* !interface */
