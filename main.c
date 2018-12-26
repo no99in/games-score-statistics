@@ -3,6 +3,7 @@
 void ui_test();
 
 int main() {
+
     //  系统日志
     log log;
     new_log(&log);

@@ -6,18 +6,21 @@
 #include "../ui_setting.h"
 #include "../lib/log.h"
 
-#define ZERO_STR "空串\0"
-#define NULL_STR "空值\0"
-#define LONG_STR "长串\0"
+#define UI_ZERO_STR "空串\0"
+#define UI_NULL_STR "空值\0"
+#define UI_LONG_STR "长串\0"
+#define UI_LN       "\n\0"
 
-#define DIV      '|'
-#define POINT    '+'
-#define LINE     '-'
+#define UI_DIV      '|'
+#define UI_POINT    '+'
+#define UI_LINE     '-'
+
 
 typedef struct ui{
     char * null_str;
     char * zero_str;
     char * long_str;
+    char * ln;
     char  point;
     char  line;
     char  div;
@@ -28,6 +31,7 @@ static void  notify(int log_level,char * notice);
 static void  ui_print_str(ui _self,char * s,int max_length);
 static void  ui_print_point(ui _self);
 static void  ui_print_div(ui _self);
+static void  ui_print_ln(ui _self);
 static void  ui_print_line(ui _self,int length);
 
 
@@ -83,6 +87,7 @@ extern void ui_print_fun(ui _self,int length);
  * @param  int    length
  * @return void
 */
+
 extern void ui_print_custom(ui _self,char * custom_str,int length);
 #endif //GAMES_SCORE_STATISTICS_UI_H
 

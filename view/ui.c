@@ -32,12 +32,13 @@ void new_ui(ui * self) {
     }
 
     // init
-    _self->long_str = LONG_STR;
-    _self->null_str = NULL_STR;
-    _self->zero_str = ZERO_STR;
-    _self->point    = POINT;
-    _self->line     = LINE;
-    _self->div      = DIV;
+    _self->long_str = UI_LONG_STR;
+    _self->null_str = UI_NULL_STR;
+    _self->zero_str = UI_ZERO_STR;
+    _self->point    = UI_POINT;
+    _self->line     = UI_LINE;
+    _self->div      = UI_DIV;
+    _self->ln       = UI_LN;
 
     *self = *_self;
     ui_instance = _self;
@@ -149,6 +150,12 @@ void ui_print_div(ui _self) {
 
 }
 
+static void  ui_print_ln(ui _self){
+
+    printf("%s",_self.ln);
+
+}
+
 /* !static */
 
 /* extern */
@@ -157,28 +164,28 @@ void ui_print_head(ui _self,int length){
     ui_print_point(_self);
     ui_print_line(_self,length-2);
     ui_print_point(_self);
-    printf("\n");
+    ui_print_ln(_self);
     ui_print_div(_self);
     ui_print_str(_self,TITLE,38);
     ui_print_div(_self);
-    printf("\n");
+    ui_print_ln(_self);
     ui_print_point(_self);
     ui_print_line(_self,length-2);
     ui_print_point(_self);
-    printf("\n");
+    ui_print_ln(_self);
 }
 
 void ui_print_fun(ui _self,int length){
 
-
     ui_print_div(_self);
     ui_print_str(_self,TITLE,length-2);
     ui_print_div(_self);
-    printf("\n");
+    ui_print_ln(_self);
     ui_print_point(_self);
     ui_print_line(_self,length-2);
     ui_print_point(_self);
-    printf("\n");
+    ui_print_ln(_self);
+
 }
 
 void ui_print_custom(ui _self,char * custom_str,int length){
@@ -186,11 +193,11 @@ void ui_print_custom(ui _self,char * custom_str,int length){
     ui_print_div(_self);
     ui_print_str(_self,custom_str,length-2);
     ui_print_div(_self);
-    printf("\n");
+    ui_print_ln(_self);
     ui_print_point(_self);
     ui_print_line(_self,length-2);
     ui_print_point(_self);
-    printf("\n");
+    ui_print_ln(_self);
 
 }
 
@@ -201,6 +208,7 @@ void ui_print_custom(ui _self,char * custom_str,int length){
 void notify(int log_level,char * notice){
 
     log_update(log_level, notice);
+
 }
 
 /* !interface */
