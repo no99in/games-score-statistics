@@ -9,17 +9,17 @@
 ui * ui_instance = NULL;
 
 // singleton pattern model
-extern ui get_ui_instance(){
+extern ui _get_ui_instance(){
 
     if(!ui_instance)
-        new_ui(ui_instance);
+        _new_ui(ui_instance);
 
     return *ui_instance;
 
 }
 
 // ui construct
-void new_ui(ui * self) {
+void _new_ui(ui *self) {
 
     // malloc
     ui * _self = (pui)malloc(sizeof(ui));
@@ -27,31 +27,31 @@ void new_ui(ui * self) {
     if(!_self) {
 
         _log.log_information = "UI界面初始化失败,错误代码(500)!\0";
-        notify(ERROR,_log.log_information);
+        _ui_notify(ERROR, _log.log_information);
         exit(500);
     }
 
     // init
-    _self->long_str = UI_LONG_STR;
-    _self->null_str = UI_NULL_STR;
-    _self->zero_str = UI_ZERO_STR;
-    _self->point    = UI_POINT;
-    _self->line     = UI_LINE;
-    _self->div      = UI_DIV;
-    _self->ln       = UI_LN;
+    _self->long_str = _UI_LONG_STR;
+    _self->null_str = _UI_NULL_STR;
+    _self->zero_str = _UI_ZERO_STR;
+    _self->point    = _UI_POINT;
+    _self->line     = _UI_LINE;
+    _self->div      = _UI_DIV;
+    _self->ln       = _UI_LN;
 
     *self = *_self;
     ui_instance = _self;
 
     _log.log_information  = "UI界面初始化完成!\0";
 
-    notify(INFO,_log.log_information);
+    _ui_notify(INFO, _log.log_information);
 
 }
 
 // reload the function strlen() in that chinese character take up three lengths
 // in fact the character width only take up two units;
-int str_length(char * s){
+int _ui_str_length(char *s){
 
     int res = 0;
     double flag_cn_op = 0.0;
@@ -83,28 +83,28 @@ int str_length(char * s){
 }
 
 // print ==> |    |str|    |<-max_length
-void ui_print_str(ui _self,char * s,int max_length) {
+void _ui_print_str(ui _self, char *s, int max_length) {
 
     log _log = get_log_instance();
 
     if(!s) {
         s = _self.null_str;
         strcpy(_log.log_information , "出现空指针,请正确使用系统\0");
-        notify(ERROR,_log.log_information);
+        _ui_notify(ERROR, _log.log_information);
     }
 
-    int str_len = str_length(s);
+    int str_len = _ui_str_length(s);
 
     if(!str_len) {
         s = _self.zero_str;
-        str_len = str_length(s);
+        str_len = _ui_str_length(s);
         strcpy( _log.log_information , "位置出现0串,请正确使用系统\0");
-        notify(WARN,_log.log_information);
+        _ui_notify(WARN, _log.log_information);
     }else if(str_len > max_length){
         s = _self.long_str;
-        str_len = str_length(s);
+        str_len = _ui_str_length(s);
         strcpy(_log.log_information , "位置出现长度过长的子串,请正确使用系统\0");
-        notify(WARN,_log.log_information);
+        _ui_notify(WARN, _log.log_information);
     }
 
     int flag_u_bnk_len_dcl = (max_length - str_len) % 2?1:0;
@@ -129,14 +129,14 @@ void ui_print_str(ui _self,char * s,int max_length) {
 }
 
 // print +,~,*,^ ...
-void ui_print_point(ui _self) {
+void _ui_print_point(ui _self) {
 
     printf("%c",_self.point);
 
 }
 
 // print - ...
-void ui_print_line(ui _self,int length) {
+void _ui_print_line(ui _self, int length) {
 
     while(length--)
         printf("%c",_self.line);
@@ -144,13 +144,13 @@ void ui_print_line(ui _self,int length) {
 }
 
 // print | ...
-void ui_print_div(ui _self) {
+void _ui_print_div(ui _self) {
 
     printf("%c",_self.div);
 
 }
 
-static void  ui_print_ln(ui _self){
+static void  _ui_print_ln(ui _self){
 
     printf("%s",_self.ln);
 
@@ -160,44 +160,44 @@ static void  ui_print_ln(ui _self){
 
 /* extern */
 
-void ui_print_head(ui _self,int length){
-    ui_print_point(_self);
-    ui_print_line(_self,length-2);
-    ui_print_point(_self);
-    ui_print_ln(_self);
-    ui_print_div(_self);
-    ui_print_str(_self,TITLE,38);
-    ui_print_div(_self);
-    ui_print_ln(_self);
-    ui_print_point(_self);
-    ui_print_line(_self,length-2);
-    ui_print_point(_self);
-    ui_print_ln(_self);
+void _ui_print_head(ui _self, int length){
+    _ui_print_point(_self);
+    _ui_print_line(_self, length - 2);
+    _ui_print_point(_self);
+    _ui_print_ln(_self);
+    _ui_print_div(_self);
+    _ui_print_str(_self, TITLE, 38);
+    _ui_print_div(_self);
+    _ui_print_ln(_self);
+    _ui_print_point(_self);
+    _ui_print_line(_self, length - 2);
+    _ui_print_point(_self);
+    _ui_print_ln(_self);
 }
 
-void ui_print_fun(ui _self,int length){
+void _ui_print_fun(ui _self, int length){
 
-    ui_print_div(_self);
-    ui_print_str(_self,TITLE,length-2);
-    ui_print_div(_self);
-    ui_print_ln(_self);
-    ui_print_point(_self);
-    ui_print_line(_self,length-2);
-    ui_print_point(_self);
-    ui_print_ln(_self);
+    _ui_print_div(_self);
+    _ui_print_str(_self, TITLE, length - 2);
+    _ui_print_div(_self);
+    _ui_print_ln(_self);
+    _ui_print_point(_self);
+    _ui_print_line(_self, length - 2);
+    _ui_print_point(_self);
+    _ui_print_ln(_self);
 
 }
 
-void ui_print_custom(ui _self,char * custom_str,int length){
+void _ui_print_custom(ui _self, char *custom_str, int length){
 
-    ui_print_div(_self);
-    ui_print_str(_self,custom_str,length-2);
-    ui_print_div(_self);
-    ui_print_ln(_self);
-    ui_print_point(_self);
-    ui_print_line(_self,length-2);
-    ui_print_point(_self);
-    ui_print_ln(_self);
+    _ui_print_div(_self);
+    _ui_print_str(_self, custom_str, length - 2);
+    _ui_print_div(_self);
+    _ui_print_ln(_self);
+    _ui_print_point(_self);
+    _ui_print_line(_self, length - 2);
+    _ui_print_point(_self);
+    _ui_print_ln(_self);
 
 }
 
@@ -205,9 +205,9 @@ void ui_print_custom(ui _self,char * custom_str,int length){
 
 /* interface */
 
-void notify(int log_level,char * notice){
+void _ui_notify(int log_level, char *notice){
 
-    log_update(log_level, notice);
+    //log_update(log_level, notice);
 
 }
 
