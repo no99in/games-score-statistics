@@ -13,6 +13,7 @@ typedef struct school{
 }school,* pschool;
 
 extern school new_school();
+extern school create_school(long long id, str name);
 extern long long school_get_id();
 extern str school_get_name();
 extern void school_set_id(long long id);

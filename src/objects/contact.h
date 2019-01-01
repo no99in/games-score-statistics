@@ -14,6 +14,7 @@ typedef struct contact{
 }contact,* pcontact;
 
 extern contact new_contact();
+extern contact create_contact(long long sid,long long pid, double score);
 extern long long contact_get_sid();
 extern long long contact_get_pid();
 extern double contact_get_score();
