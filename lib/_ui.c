@@ -53,6 +53,8 @@ void _new_ui(_ui *self) {
 
 }
 
+
+
 // reload the function strlen() in that chinese character take up three lengths
 // in fact the character width only take up two units;
 int _ui_str_length(char *s){
