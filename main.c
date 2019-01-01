@@ -28,7 +28,7 @@ int main() {
 
     list l;
     int a = 4;
-    new_list(&l, sizeof(int),&a);
+    _new_list(&l, sizeof(int), &a);
     printf("%d",*(int*)l.head->data);
 
     return 0;

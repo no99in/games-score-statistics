@@ -20,7 +20,7 @@ typedef struct list
     int length;
 }list,* plist;
 
-extern void new_list(list *_self,int data_size,int* c);
+extern void _new_list(list *_self, int data_size);
 
 
 #endif //GAMES_SCORE_STATISTICS_LIST_H
