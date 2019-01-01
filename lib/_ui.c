@@ -97,7 +97,7 @@ void _ui_print_str(_ui _self, char *s, int max_length) {
         s = _self.null_str;
         strcpy(_log.log_information , "出现空指针,请正确使用系统\0");
         _log.log_type=_LOG_ERROR;
-        _ui_notify(_LOG_ERROR, _log.log_information);
+        _ui_notify(_log.log_type, _log.log_information);
     }
 
     int str_len = _ui_str_length(s);
@@ -107,13 +107,13 @@ void _ui_print_str(_ui _self, char *s, int max_length) {
         str_len = _ui_str_length(s);
         strcpy( _log.log_information , "位置出现0串,请正确使用系统\0");
         _log.log_type=_LOG_WARN;
-        _ui_notify(_LOG_WARN, _log.log_information);
+        _ui_notify(_log.log_type, _log.log_information);
     }else if(str_len > max_length){
         s = _self.long_str;
         str_len = _ui_str_length(s);
         strcpy(_log.log_information , "位置出现长度过长的子串,请正确使用系统\0");
         _log.log_type=_LOG_WARN;
-        _ui_notify(_LOG_WARN, _log.log_information);
+        _ui_notify(_log.log_type, _log.log_information);
     }
 
     int flag_u_bnk_len_dcl = (max_length - str_len) % 2?1:0;

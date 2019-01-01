@@ -1,5 +1,6 @@
 #include "lib/_ui.h"
 #include "lib/_str.h"
+#include "src/datastructs/list.h"
 
 void ui_test();
 
@@ -18,6 +19,17 @@ int main() {
 
 
 
+
+
+
+
+
+
+
+    list l;
+    int a = 4;
+    new_list(&l, sizeof(int),&a);
+    printf("%d",*(int*)l.head->data);
 
     return 0;
 }
