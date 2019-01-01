@@ -1,0 +1,8 @@
+//
+// Created by moss on 1/1/19.
+//
+
+#ifndef GAMES_SCORE_STATISTICS_STR_H
+#define GAMES_SCORE_STATISTICS_STR_H
+
+#endif //GAMES_SCORE_STATISTICS_STR_H

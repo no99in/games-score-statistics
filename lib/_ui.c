@@ -2,14 +2,14 @@
 // Created by mossnodie on 12/23/18.
 //
 
-#include "ui.h"
+#include "_ui.h"
 
 /* static */
 
-ui * ui_instance = NULL;
+_ui * ui_instance = NULL;
 
 // singleton pattern model
-extern ui _get_ui_instance(){
+extern _ui _get_ui_instance(){
 
     if(!ui_instance)
         _new_ui(ui_instance);
@@ -18,16 +18,19 @@ extern ui _get_ui_instance(){
 
 }
 
-// ui construct
-void _new_ui(ui *self) {
+// _ui construct
+void _new_ui(_ui *self) {
 
     // malloc
-    ui * _self = (pui)malloc(sizeof(ui));
-    log _log = get_log_instance();
+    _ui * _self = (_pui)malloc(sizeof(_ui));
+    _log _log = _get_log_instance();
     if(!_self) {
 
-        _log.log_information = "UI界面初始化失败,错误代码(500)!\0";
-        _ui_notify(ERROR, _log.log_information);
+        strcpy(_log.log_information ,"UI界面初始化失败,错误代码(500)!\0");
+        _log.log_type = _LOG_ERROR;
+
+        _ui_notify(_log.log_type, _log.log_information);
+
         exit(500);
     }
 
@@ -43,9 +46,10 @@ void _new_ui(ui *self) {
     *self = *_self;
     ui_instance = _self;
 
-    _log.log_information  = "UI界面初始化完成!\0";
+    strcpy( _log.log_information  , "UI界面初始化完成!\0");
+    _log.log_type = _LOG_INFO;
 
-    _ui_notify(INFO, _log.log_information);
+    _ui_notify(_log.log_type, _log.log_information);
 
 }
 
@@ -83,14 +87,15 @@ int _ui_str_length(char *s){
 }
 
 // print ==> |    |str|    |<-max_length
-void _ui_print_str(ui _self, char *s, int max_length) {
+void _ui_print_str(_ui _self, char *s, int max_length) {
 
-    log _log = get_log_instance();
+    _log _log = _get_log_instance();
 
     if(!s) {
         s = _self.null_str;
         strcpy(_log.log_information , "出现空指针,请正确使用系统\0");
-        _ui_notify(ERROR, _log.log_information);
+        _log.log_type=_LOG_ERROR;
+        _ui_notify(_LOG_ERROR, _log.log_information);
     }
 
     int str_len = _ui_str_length(s);
@@ -99,12 +104,14 @@ void _ui_print_str(ui _self, char *s, int max_length) {
         s = _self.zero_str;
         str_len = _ui_str_length(s);
         strcpy( _log.log_information , "位置出现0串,请正确使用系统\0");
-        _ui_notify(WARN, _log.log_information);
+        _log.log_type=_LOG_WARN;
+        _ui_notify(_LOG_WARN, _log.log_information);
     }else if(str_len > max_length){
         s = _self.long_str;
         str_len = _ui_str_length(s);
         strcpy(_log.log_information , "位置出现长度过长的子串,请正确使用系统\0");
-        _ui_notify(WARN, _log.log_information);
+        _log.log_type=_LOG_WARN;
+        _ui_notify(_LOG_WARN, _log.log_information);
     }
 
     int flag_u_bnk_len_dcl = (max_length - str_len) % 2?1:0;
@@ -129,14 +136,14 @@ void _ui_print_str(ui _self, char *s, int max_length) {
 }
 
 // print +,~,*,^ ...
-void _ui_print_point(ui _self) {
+void _ui_print_point(_ui _self) {
 
     printf("%c",_self.point);
 
 }
 
 // print - ...
-void _ui_print_line(ui _self, int length) {
+void _ui_print_line(_ui _self, int length) {
 
     while(length--)
         printf("%c",_self.line);
@@ -144,13 +151,13 @@ void _ui_print_line(ui _self, int length) {
 }
 
 // print | ...
-void _ui_print_div(ui _self) {
+void _ui_print_div(_ui _self) {
 
     printf("%c",_self.div);
 
 }
 
-static void  _ui_print_ln(ui _self){
+static void  _ui_print_ln(_ui _self){
 
     printf("%s",_self.ln);
 
@@ -160,7 +167,7 @@ static void  _ui_print_ln(ui _self){
 
 /* extern */
 
-void _ui_print_head(ui _self, int length){
+void _ui_print_head(_ui _self, int length){
     _ui_print_point(_self);
     _ui_print_line(_self, length - 2);
     _ui_print_point(_self);
@@ -175,7 +182,7 @@ void _ui_print_head(ui _self, int length){
     _ui_print_ln(_self);
 }
 
-void _ui_print_fun(ui _self, int length){
+void _ui_print_fun(_ui _self, int length){
 
     _ui_print_div(_self);
     _ui_print_str(_self, TITLE, length - 2);
@@ -188,7 +195,7 @@ void _ui_print_fun(ui _self, int length){
 
 }
 
-void _ui_print_custom(ui _self, char *custom_str, int length){
+void _ui_print_custom(_ui _self, char *custom_str, int length){
 
     _ui_print_div(_self);
     _ui_print_str(_self, custom_str, length - 2);
@@ -207,7 +214,7 @@ void _ui_print_custom(ui _self, char *custom_str, int length){
 
 void _ui_notify(int log_level, char *notice){
 
-    //log_update(log_level, notice);
+    _log_update(log_level, notice);
 
 }
 

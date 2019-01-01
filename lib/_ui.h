@@ -4,7 +4,8 @@
 #ifndef GAMES_SCORE_STATISTICS_UI_H
 #define GAMES_SCORE_STATISTICS_UI_H
 #include "../ui_setting.h"
-#include "../lib/log.h"
+#include "_log.h"
+#include "_stdhead.h"
 
 #define _UI_ZERO_STR "空串\0"
 #define _UI_NULL_STR "空值\0"
@@ -16,7 +17,7 @@
 #define _UI_LINE     '-'
 
 
-typedef struct ui{
+typedef struct _ui{
     char * null_str;
     char * zero_str;
     char * long_str;
@@ -24,15 +25,15 @@ typedef struct ui{
     char  point;
     char  line;
     char  div;
-}ui,* pui;
+}_ui,* _pui;
 
 static int   _ui_str_length(char *s);
 static void  _ui_notify(int log_level, char *notice);
-static void  _ui_print_str(ui _self, char *s, int max_length);
-static void  _ui_print_point(ui _self);
-static void  _ui_print_div(ui _self);
-static void  _ui_print_ln(ui _self);
-static void  _ui_print_line(ui _self, int length);
+static void  _ui_print_str(_ui _self, char *s, int max_length);
+static void  _ui_print_point(_ui _self);
+static void  _ui_print_div(_ui _self);
+static void  _ui_print_ln(_ui _self);
+static void  _ui_print_line(_ui _self, int length);
 
 
 
@@ -43,7 +44,7 @@ static void  _ui_print_line(ui _self, int length);
  * @param  待初始化的ui声明
  * @return 无
  */
-extern void  _new_ui(ui *self);
+extern void  _new_ui(_ui *self);
 
 
 /**
@@ -51,7 +52,7 @@ extern void  _new_ui(ui *self);
  * @param  无
  * @return ui实例
  */
-extern ui    _get_ui_instance();
+extern _ui    _get_ui_instance();
 
 
 
@@ -64,7 +65,7 @@ extern ui    _get_ui_instance();
  * @param  int length
  * @return void
  */
-extern void  _ui_print_head(ui _self, int length);
+extern void  _ui_print_head(_ui _self, int length);
 
 
 /**
@@ -75,7 +76,7 @@ extern void  _ui_print_head(ui _self, int length);
  * @param  int length
  * @return void
  */
-extern void _ui_print_fun(ui _self, int length);
+extern void _ui_print_fun(_ui _self, int length);
 
 
 /**
@@ -88,7 +89,7 @@ extern void _ui_print_fun(ui _self, int length);
  * @return void
 */
 
-extern void _ui_print_custom(ui _self, char *custom_str, int length);
+extern void _ui_print_custom(_ui _self, char *custom_str, int length);
 #endif //GAMES_SCORE_STATISTICS_UI_H
 
 

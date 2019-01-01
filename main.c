@@ -1,21 +1,21 @@
-#include "view/ui.h"
+#include "view/_ui.h"
 
 void ui_test();
 
 int main() {
 
     //  系统日志
-    log log;
-    new_log(&log);
+    _log log;
+    _new_log(&log);
 
     // ui界面构建
-    ui ui;
+    _ui ui;
     _new_ui(&ui);
 
     // 单元测试
     ui_test();
 
-    system("clear");
+
     return 0;
 }
 
@@ -23,7 +23,7 @@ int main() {
 
 void ui_test() {
 
-    ui _ui = _get_ui_instance();
+    _ui _ui = _get_ui_instance();
     int display_width = 40;
 
     _ui_print_head(_ui, display_width);

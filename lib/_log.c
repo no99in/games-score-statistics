@@ -2,29 +2,33 @@
 // Created by mossnodie on 12/24/18.
 //
 
-#include "../lib/log.h"
+#include "_log.h"
 
-log * log_instance = NULL;
+_log * _log_instance = NULL;
 
-log get_log_instance(){
-    if(!log_instance)
-        new_log(log_instance);
-    return *log_instance;
+_log _get_log_instance(){
+
+    if(!_log_instance)
+        _new_log(_log_instance);
+    return *_log_instance;
+
 }
 
-void new_log(log * _self){
+void _new_log(_log *_self){
 
-    log * self = (plog)malloc(sizeof(log));
+    _log * self = (_plog)malloc(sizeof(_log));
 
-    int buffer_size = LOG_BUFFER_SIZE;
+    int buffer_size = _LOG_BUFFER_SIZE;
     self->log_information = (char*)malloc(sizeof(char)*buffer_size);
+    self->log_type = _LOG_OFF;
 
     *_self = *self;
-    log_instance = self;
+    _log_instance = self;
 
 }
 
-void log_update(int level, char *s){
+void _log_update(int level, char *s){
+
     switch (level){
         case 0:
             break;
