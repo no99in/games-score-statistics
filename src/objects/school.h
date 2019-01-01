@@ -8,11 +8,11 @@
 #define GAMES_SCORE_STATISTICS_SCHOOL_H
 
 typedef struct school{
-    long long adress;
     long long id;
     str name;
 }school,* pschool;
 
+extern school new_school();
 extern long long school_get_id();
 extern str school_get_name();
 extern void school_set_id(long long id);
