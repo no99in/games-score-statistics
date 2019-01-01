@@ -1,5 +1,5 @@
 #include "lib/_ui.h"
-#include "lib/str.h"
+#include "lib/_str.h"
 
 void ui_test();
 
@@ -16,14 +16,8 @@ int main() {
 //    // 单元测试
 //    ui_test();
 
-char * a = "124\0";
-    char * e = NULL;
-str b;
-str c;
-str_assign(&b,a);
-str_assign(&c,e);
 
-int d = str_compare(b,c);
+
 
     return 0;
 }

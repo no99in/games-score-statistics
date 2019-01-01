@@ -2,9 +2,9 @@
 // Created by moss on 1/1/19.
 //
 
-#include "str.h"
+#include "_str.h"
 
-extern Status str_assign(pstr t,char * s){
+extern Status _str_assign(pstr t, char *s){
 
     if(!s){
         t->ch = NULL;
@@ -33,7 +33,7 @@ extern Status str_assign(pstr t,char * s){
 
     p = s;
     while(--length >= 0){
-        pt->ch[length] = p[length];
+        (pt->ch)[length] = p[length];
     }// 将 s 赋值给 pt->ch
 
     *t = *pt;// 将 pt 赋值给 p
@@ -43,11 +43,11 @@ extern Status str_assign(pstr t,char * s){
     return OK;
 
 }
-extern int str_length(str s){
+extern int _str_length(str s){
     return s.length;
 }
 
-extern int str_compare(str s1,str s2){
+extern int _str_compare(str s1, str s2){
     if(s1.length!=s2.length)
         return s1.length-s2.length;
     else
@@ -57,5 +57,17 @@ extern int str_compare(str s1,str s2){
     return 0;
 }
 
-extern Status str_concat(pstr t,str s1,str s2){}
+extern Status _str_concat(pstr t, str s1, str s2){
+    pstr pt = (pstr)malloc(sizeof(str));
+    pt->length = s1.length+s2.length;
+    pt->ch = (char*)malloc(sizeof(char)*(pt->length));
+    for(int i = 0;i < s1.length;i++){
+        (pt->ch)[i] = (s1.ch)[i];
+    }
+    for(int i = s1.length;i < s2.length+s1.length;i++){
+        (pt->ch)[i] = (s2.ch)[i-s1.length];
+    }
+    *t = *pt;
+    free(pt);
+}
 

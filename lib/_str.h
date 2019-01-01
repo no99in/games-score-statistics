@@ -12,9 +12,9 @@ typedef struct str{
     int length;
 }str,* pstr;
 
-extern Status str_assign(pstr t,char * s);
-extern int str_length(str s);
-extern int str_compare(str s1,str s2);
-extern Status str_concat(pstr t,str s1,str s2);
+extern Status _str_assign(pstr t, char *s);
+extern int _str_length(str s);
+extern int _str_compare(str s1, str s2);
+extern Status _str_concat(pstr t, str s1, str s2);
 
 #endif //GAMES_SCORE_STATISTICS_STR_H
