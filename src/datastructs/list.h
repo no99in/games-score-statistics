@@ -6,6 +6,7 @@
 #define GAMES_SCORE_STATISTICS_LIST_H
 
 #include "../../lib/_stdhead.h"
+#include "../../lib/_datastructhead.h"
 
 typedef struct node
 {
@@ -20,7 +21,8 @@ typedef struct list
     int length;
 }list,* plist;
 
-extern void _new_list(list *_self, int data_size);
-extern void _list_push(list * _self, void * data);
+extern Status _new_list(list *_self, int data_size);
+extern Status _list_head_push(list * _self, void * data);
+extern void * _list_get(list _self,int i);
 
 #endif //GAMES_SCORE_STATISTICS_LIST_H

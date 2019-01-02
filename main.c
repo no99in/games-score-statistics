@@ -26,11 +26,37 @@ int main() {
 
 
 
-    list l;
-    int a = 4;
-    _new_list(&l, sizeof(int));
-    _list_push(&l,&a);
-    printf("%d",*(int*)(l.head->data));
+
+    int a = 1;
+    int b = 2;
+
+    list int_list;
+    _new_list(&int_list, sizeof(int));
+
+    _list_head_push(&int_list,&a);
+    _list_head_push(&int_list,&b);
+
+    int c = *(int*)_list_get(int_list,1);
+    int d = *(int*)_list_get(int_list,2);
+
+    printf("%d\n",c);
+    printf("%d\n",d);
+
+    double e = 1.0;
+    double f = 2.0;
+
+    list double_list;
+    _new_list(&double_list, sizeof(double));
+
+    _list_head_push(&double_list,&e);
+    _list_head_push(&double_list,&f);
+
+    double g = *(double *)_list_get(double_list,1);
+    double h = *(double *)_list_get(double_list,2);
+
+    printf("%lf\n",g);
+    printf("%lf\n",h);
+
     return 0;
 }
 
