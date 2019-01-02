@@ -10,6 +10,7 @@
 typedef struct school{
     long long id;
     str name;
+    int score;
 }school,* pschool;
 
 extern school    new_school(school *_self);
