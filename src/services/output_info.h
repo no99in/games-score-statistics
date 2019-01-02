@@ -13,15 +13,19 @@
 #include "../datastructs/list.h"
 
 
-extern void _output(list* schools,list *contacts,list *projects);
+extern void _output(list *schools, list *contacts, list *projects);
 
-extern void output_school_info(list * schools);
-extern void output_project_info(list * projects);
-extern void output_contact_info(list * contacts,list * schools,list * projects);
+extern void output_school_info(list *schools);
 
-static str output_sid_to_school_name(list * schools,int sid);
-static  char * output_pid_to_project_type(list *projects, int pid);
-static  str output_pid_to_project_name(list *projects, int pid);
+extern void output_project_info(list *projects);
+
+extern void output_contact_info(list *contacts, list *schools, list *projects);
+
+static str output_sid_to_school_name(list *schools, int sid);
+
+static char *output_pid_to_project_type(list *projects, int pid);
+
+static str output_pid_to_project_name(list *projects, int pid);
 
 
 #endif //GAMES_SCORE_STATISTICS_OUT_PUT_H

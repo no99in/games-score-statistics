@@ -4,7 +4,9 @@
 
 #ifndef GAMES_SCORE_STATISTICS_STDHEAD_H
 #define GAMES_SCORE_STATISTICS_STDHEAD_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 #endif //GAMES_SCORE_STATISTICS_STDHEAD_H

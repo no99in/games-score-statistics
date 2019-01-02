@@ -4,7 +4,7 @@
 
 #include "start.h"
 
-int service_start(){
+int service_start() {
 
     //  系统日志
     _log log;
@@ -25,11 +25,11 @@ int service_start(){
     _new_list(&projects, sizeof(project));
 
     // 单元测试
-    _input(&schools,&contacts,&projects);
+    _input(&schools, &contacts, &projects);
 
     output_school_info(&schools);
     output_project_info(&projects);
-    output_contact_info(&contacts,&schools,&projects);
+    output_contact_info(&contacts, &schools, &projects);
 
 //    printf("%s",((school*)schools.head->data)->name);
 //    printf("%s",((school*)schools.head->next->data)->name);
