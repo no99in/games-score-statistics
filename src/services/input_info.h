@@ -11,11 +11,11 @@
 #include "../objects/project.h"
 #include "../objects/contact.h"
 
-extern void input();
+extern void _input();
 
 static school input_school_info();
 static project input_project_info();
-static void input_contact_info(school s,project p);
+static contact input_contact_info(school s,project p);
 
 
 #endif //GAMES_SCORE_STATISTICS_INPUT_INFO_H

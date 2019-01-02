@@ -6,8 +6,6 @@
 
 int display_width = DISPLAY_WIDTH;
 
-
-
 school input_school_info(){
 
     char * input = (char*)malloc(sizeof(char)*100);
@@ -79,7 +77,9 @@ project input_project_info(){
     return *p;
 
 }
-void input_contact_info(school s ,project p ){
+contact input_contact_info(school s ,project p ){
+
+    contact * c = (pcontact)malloc(sizeof(contact));
 
     _ui ui = _get_ui_instance();
     _ui_print_custom_head(ui,"请确认学校与项目\0",display_width);
@@ -94,12 +94,43 @@ void input_contact_info(school s ,project p ){
     p.type?_ui_print_custom_odd_fix(ui,"男子\0",display_width,3):_ui_print_custom_odd_fix(ui,"女子\0",display_width,3);
     _ui_print_custom_row_end(ui,display_width);
 
+    char * input = (char*)malloc(sizeof(char)*100);
+    scanf("%s",input);
+    str input_is;
+    _str_assign(&input_is,input);
+
+    str project_type_is_1;
+    _str_assign(&project_type_is_1,"是\0");
+    str project_type_is_2;
+    _str_assign(&project_type_is_2,"1\0");
+    str project_type_is_3;
+    _str_assign(&project_type_is_3,"正确\0");
+
+    str project_type_isnot_1;
+    _str_assign(&project_type_isnot_1,"否\0");
+    str project_type_isnot_2;
+    _str_assign(&project_type_isnot_2,"0\0");
+    str project_type_isnot_3;
+    _str_assign(&project_type_isnot_3,"错误\0");
+
+    if(_str_compare(input_is,project_type_is_3)==0||_str_compare(input_is,project_type_is_2)==0||_str_compare(input_is,project_type_is_1)==0){
+        _ui_print_custom_head(ui,"请输入成绩\0",display_width);
+        int score = 0;
+        scanf("%d",&score);
+        c->score = score;
+        c->pid = p.id;
+        c->sid = s.id;
+        return *c;
+    }
+    if(_str_compare(input_is,project_type_isnot_1)==0||_str_compare(input_is,project_type_isnot_2)==0||_str_compare(input_is,project_type_isnot_3)==0){
+        _input();
+    }
 }
 
-void input(){
+void _input(){
 
     school s = input_school_info();
     project p = input_project_info();
-    input_contact_info(s,p);
+    contact c = input_contact_info(s,p);
 
 }

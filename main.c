@@ -16,7 +16,8 @@ int main() {
     _new_ui(&ui);
 
     // 单元测试
-    input();
+    _input();
+    return  0;
 
 }
 
