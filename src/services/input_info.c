@@ -20,13 +20,14 @@ school input_school_info(){
 
     school * s = (pschool)malloc(sizeof(school));
     _str_copy(&s->name,&school_name);
-    s->id = 1;
+    s->id = school_get_id(*s);
 
     free(input);
 
     return *s;
 
 }
+
 project input_project_info(){
 
     project * p = (pproject)malloc(sizeof(project));
@@ -70,13 +71,14 @@ project input_project_info(){
 
     _str_copy(&p->name,&project_name);
     p->type = project_type;
-    p->id = 1;
+    p->id = project_get_id(*p);
 
     free(input);
 
     return *p;
 
 }
+
 contact input_contact_info(school s ,project p ,list *schools,list *projects,list *contacts){
 
     contact * c = (pcontact)malloc(sizeof(contact));
@@ -127,24 +129,86 @@ contact input_contact_info(school s ,project p ,list *schools,list *projects,lis
     }
 }
 
-void input_update_school_info(list *schools,school s){
-    _list_head_push(schools,&s);
-}
-void input_update_project_info(list *projects,project p){
-    _list_head_push(projects,&p);
-}
-void input_update_contact_info(list *contacts,contact c){
-    _list_head_push(contacts,&c);
-}
 
 void _input(list *schools,list *contacts,list *projects){
 
-    school s = input_school_info();
-    project p = input_project_info();
-    contact c = input_contact_info(s,p,schools,contacts,projects);
+    int i = 3;
 
-    input_update_school_info(schools,s);
-    input_update_project_info(projects,p);
-    input_update_contact_info(contacts,c);
+    while(i--) {
+        school s = input_school_info();
+        project p = input_project_info();
+        contact c = input_contact_info(s, p, schools, contacts, projects);
+
+        input_update(schools, &s, projects, &p, contacts, &c);
+    }
+
+}
+
+
+void input_update(list *schools,school *s,list *projects,project *p,list *contacts,contact *c){
+
+    node * sn = schools->head;
+
+    int flag = 0;
+
+    while(sn){
+
+        if(_str_compare(((school*)sn->data)->name,s->name)==0){
+            flag = 1;
+            break;
+        }
+
+        sn = sn->next;
+
+    }
+
+    if(!flag)
+        _list_head_push(schools,s);
+    else
+        s->id = ((school*)sn->data)->id;
+
+
+    node * pn = projects->head;
+
+    flag = 0;
+
+    while(pn){
+
+        if(_str_compare(((project*)pn->data)->name,p->name)==0 && ((project*)pn->data)->id == p->id){
+            flag = 1;
+            break;
+        }
+
+        pn = pn->next;
+
+    }
+
+    if(!flag)
+        _list_head_push(projects,p);
+    else
+        p->id = ((school*)sn->data)->id;
+
+    c->sid = s->id;
+    c->pid = p->id;
+
+    node * cn = contacts->head;
+
+    flag = 0;
+
+    while(cn){
+
+        if(((contact*)cn->data)->sid == c->sid && ((contact*)cn->data)->pid == c->pid){
+            flag = 1;
+            break;
+        }
+
+        cn = cn->next;
+
+    }
+
+    if(!flag)
+        _list_head_push(contacts,c);
+    else
+        ((contact*)cn->data)->score = c->score;
 
 }

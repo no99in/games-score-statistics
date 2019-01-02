@@ -54,7 +54,7 @@ extern Status _str_assign(str * t, char *s){
         (pt->ch)[length] = p[length];
     }// 将 s 赋值给 pt->ch
 
-    *t = *pt;// 将 pt 赋值给 p
+    *t = *pt;// 将 pt 赋值给 t
 
     free(pt);// 释放 pt
 
@@ -87,5 +87,19 @@ extern Status _str_concat(pstr t, str s1, str s2){
     }
     *t = *pt;
     free(pt);
+}
+
+extern str _str_long_to_str(long num){
+
+    char * t =  (char*)malloc(sizeof(char)*10);
+
+    sprintf(t, "%ld", num);
+
+    str res;
+
+    _str_assign(&res,t);
+
+    return res;
+
 }
 

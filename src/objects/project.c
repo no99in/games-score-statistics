@@ -3,3 +3,10 @@
 //
 
 #include "project.h"
+
+
+long _project_id = 1;
+
+long  project_get_id(project _self){
+    return _project_id++;
+}

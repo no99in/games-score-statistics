@@ -18,9 +18,6 @@ static school input_school_info();
 static project input_project_info();
 static contact input_contact_info(school s ,project p ,list *schools,list *projects,list *contacts);
 
-static void input_update_school_info(list* schools,school s);
-static void input_update_project_info(list *projects,project p);
-static void input_update_contact_info(list *contacts,contact c);
-
+static void input_update(list *schools,school *s,list *projects,project *p,list *contacts,contact *c);
 
 #endif //GAMES_SCORE_STATISTICS_INPUT_INFO_H

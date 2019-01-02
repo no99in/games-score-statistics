@@ -27,7 +27,11 @@ int service_start(){
     // 单元测试
     _input(&schools,&contacts,&projects);
 
-    printf("%s",((school*)schools.head->data)->name);
+    output_school_info(&schools);
+
+//    printf("%s",((school*)schools.head->data)->name);
+//    printf("%s",((school*)schools.head->next->data)->name);
+//    printf("%s",((school*)schools.head->next->next->data)->name);
 
     return 0;
 
