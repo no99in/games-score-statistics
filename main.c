@@ -42,20 +42,11 @@ int main() {
     printf("%d\n",c);
     printf("%d\n",d);
 
-    double e = 1.0;
-    double f = 2.0;
+    _list_remove(&int_list,2);
 
-    list double_list;
-    _new_list(&double_list, sizeof(double));
+    c = *(int*)_list_get(int_list,1);
 
-    _list_head_push(&double_list,&e);
-    _list_head_push(&double_list,&f);
-
-    double g = *(double *)_list_get(double_list,1);
-    double h = *(double *)_list_get(double_list,2);
-
-    printf("%lf\n",g);
-    printf("%lf\n",h);
+    printf("%d\n",c);
 
     return 0;
 }
