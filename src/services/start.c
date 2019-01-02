@@ -28,6 +28,8 @@ int service_start(){
     _input(&schools,&contacts,&projects);
 
     output_school_info(&schools);
+    output_project_info(&projects);
+    output_contact_info(&contacts,&schools,&projects);
 
 //    printf("%s",((school*)schools.head->data)->name);
 //    printf("%s",((school*)schools.head->next->data)->name);
