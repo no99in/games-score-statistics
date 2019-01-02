@@ -18,37 +18,6 @@ int main() {
 //    ui_test();
 
 
-
-
-
-
-
-
-
-
-
-    int a = 1;
-    int b = 2;
-
-    list int_list;
-    _new_list(&int_list, sizeof(int));
-
-    _list_insert(&int_list, &a, 1);
-    _list_insert(&int_list, &b, 1);
-
-    int c = *(int*)_list_get(int_list,1);
-    int d = *(int*)_list_get(int_list,2);
-
-    printf("%d\n",c);
-    printf("%d\n",d);
-
-    _list_remove(&int_list,2);
-
-    c = *(int*)_list_get(int_list,1);
-
-    printf("%d\n",c);
-
-    return 0;
 }
 
 

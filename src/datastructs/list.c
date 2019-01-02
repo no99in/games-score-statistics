@@ -22,25 +22,7 @@ Status _new_list(list *_self, int data_size){
 
 Status _list_head_push(list * _self, void * data){
 
-    node * pn = (node*)malloc(sizeof(node));
-    pn->data = malloc(_self->data_size);
-    memcpy(pn->data,data,_self->data_size);
-
-    if(_self->head){
-
-        pn->next = _self->head;
-        _self->head = pn;
-        ++_self->length;
-
-    } else{
-
-        _self->head = pn;
-        _self->head->next = NULL;
-        ++_self->length;
-
-    }
-
-    return OK;
+    return _list_insert(_self, data, 1);
 
 }
 
