@@ -107,3 +107,47 @@ extern Status _list_remove(list* _self,int i){
     }
 
 }
+
+Status _list_insert(list *_self, void *data, int i){
+
+    if(i == 1 && _self->length ==  0){
+
+        node * pn = (node*)malloc(sizeof(node));
+        pn->data = malloc(_self->data_size);
+        memcpy(pn->data,data,_self->data_size);
+        _self->head = pn;
+        _self->head->next = NULL;
+        ++_self->length;
+        return OK;
+
+    }
+
+    if(i > _self->length || i <= 0){
+        return ERR;
+    }
+
+    node * n = _self->head;
+    node * pn = (node*)malloc(sizeof(node));
+    pn->data = malloc(_self->data_size);
+    memcpy(pn->data,data,_self->data_size);
+
+    if(i == 1){
+
+        _self->head = pn;
+        _self->head->next = n;
+        ++_self->length;
+        return OK;
+
+    }
+
+    while(i-2 > 0 ){
+        n = n->next;
+        i--;
+    }
+
+    pn->next = n->next;
+    n->next = pn;
+    ++_self->length;
+    return OK;
+
+}

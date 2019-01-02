@@ -25,5 +25,6 @@ extern Status _new_list(list *_self, int data_size);
 extern Status _list_head_push(list * _self, void * data);
 extern void * _list_get(list _self,int i);
 extern Status _list_remove(list * _self,int i);
+extern Status _list_insert(list *_self, void *data, int i);
 
 #endif //GAMES_SCORE_STATISTICS_LIST_H

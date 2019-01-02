@@ -33,8 +33,8 @@ int main() {
     list int_list;
     _new_list(&int_list, sizeof(int));
 
-    _list_head_push(&int_list,&a);
-    _list_head_push(&int_list,&b);
+    _list_insert(&int_list, &a, 1);
+    _list_insert(&int_list, &b, 1);
 
     int c = *(int*)_list_get(int_list,1);
     int d = *(int*)_list_get(int_list,2);
