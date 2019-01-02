@@ -175,7 +175,22 @@ void _ui_print_head(_ui _self, int length){
     _ui_print_point(_self);
     _ui_print_ln(_self);
     _ui_print_div(_self);
-    _ui_print_str(_self, TITLE, 38);
+    _ui_print_str(_self, TITLE, length - 2);
+    _ui_print_div(_self);
+    _ui_print_ln(_self);
+    _ui_print_point(_self);
+    _ui_print_line(_self, length - 2);
+    _ui_print_point(_self);
+    _ui_print_ln(_self);
+}
+
+void _ui_print_custom_head(_ui _self, char *custom_str,int length){
+    _ui_print_point(_self);
+    _ui_print_line(_self, length - 2);
+    _ui_print_point(_self);
+    _ui_print_ln(_self);
+    _ui_print_div(_self);
+    _ui_print_str(_self, custom_str, length - 2);
     _ui_print_div(_self);
     _ui_print_ln(_self);
     _ui_print_point(_self);

@@ -4,7 +4,7 @@
 
 #include "_str.h"
 
-extern Status _str_assign(pstr t, char *s){
+extern Status _str_assign(str * t, char *s){
 
     if(!s){
         t->ch = NULL;

@@ -12,7 +12,7 @@ typedef struct str{
     int length;
 }str,* pstr;
 
-extern Status _str_assign(pstr t, char *s);
+extern Status _str_assign(str * t, char *s);
 extern int _str_length(str s);
 extern int _str_compare(str s1, str s2);
 extern Status _str_concat(pstr t, str s1, str s2);
