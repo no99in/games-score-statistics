@@ -6,7 +6,7 @@
 #define GAMES_SCORE_STATISTICS_UI_SETTING_H
 
 
-#define DISPLAY_WIDTH 60;
+#define DISPLAY_WIDTH 70;
 
 #define TITLE "运 动 会 分 数 统 计 系 统\0"
 

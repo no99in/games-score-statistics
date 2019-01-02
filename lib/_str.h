@@ -16,5 +16,6 @@ extern Status _str_assign(str * t, char *s);
 extern int _str_length(str s);
 extern int _str_compare(str s1, str s2);
 extern Status _str_concat(pstr t, str s1, str s2);
+extern Status _str_copy(str * t, str * s);
 
 #endif //GAMES_SCORE_STATISTICS_STR_H

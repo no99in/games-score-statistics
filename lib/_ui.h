@@ -91,6 +91,10 @@ extern void _ui_print_fun(_ui _self, int length);
 
 extern void _ui_print_custom(_ui _self, char *custom_str, int length);
 extern void _ui_print_custom_head(_ui _self, char *custom_str,int length);
+extern void _ui_print_custom_row_pre(_ui _self, char *custom_str,int length,int block);
+extern void _ui_print_custom_row_sub(_ui _self, char *custom_str,int length,int block);
+extern void _ui_print_custom_odd_fix(_ui _self, char *custom_str,int length,int block);
+extern void _ui_print_custom_row_end(_ui _self,int length);
 #endif //GAMES_SCORE_STATISTICS_UI_H
 
 

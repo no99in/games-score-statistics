@@ -4,6 +4,24 @@
 
 #include "_str.h"
 
+extern Status _str_copy(str * t, str * s){
+
+    pstr pt = (pstr)malloc(sizeof(str));
+    pt->ch = (char*)malloc(sizeof(char)*s->length);
+    int length = s->length;
+    while(--length >= 0){
+        pt->ch[length] = s->ch[length];
+    }// 将 s 赋值给 pt->ch
+    pt->length = s->length;
+
+    *t = *pt;
+
+    free(pt);
+
+    return OK;
+
+}
+
 extern Status _str_assign(str * t, char *s){
 
     if(!s){

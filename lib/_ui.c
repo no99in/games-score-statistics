@@ -170,6 +170,7 @@ static void  _ui_print_ln(_ui _self){
 /* extern */
 
 void _ui_print_head(_ui _self, int length){
+
     _ui_print_point(_self);
     _ui_print_line(_self, length - 2);
     _ui_print_point(_self);
@@ -182,9 +183,11 @@ void _ui_print_head(_ui _self, int length){
     _ui_print_line(_self, length - 2);
     _ui_print_point(_self);
     _ui_print_ln(_self);
+
 }
 
 void _ui_print_custom_head(_ui _self, char *custom_str,int length){
+
     _ui_print_point(_self);
     _ui_print_line(_self, length - 2);
     _ui_print_point(_self);
@@ -197,6 +200,7 @@ void _ui_print_custom_head(_ui _self, char *custom_str,int length){
     _ui_print_line(_self, length - 2);
     _ui_print_point(_self);
     _ui_print_ln(_self);
+
 }
 
 void _ui_print_fun(_ui _self, int length){
@@ -217,6 +221,49 @@ void _ui_print_custom(_ui _self, char *custom_str, int length){
     _ui_print_div(_self);
     _ui_print_str(_self, custom_str, length - 2);
     _ui_print_div(_self);
+    _ui_print_ln(_self);
+    _ui_print_point(_self);
+    _ui_print_line(_self, length - 2);
+    _ui_print_point(_self);
+    _ui_print_ln(_self);
+
+}
+
+void _ui_print_custom_row_pre(_ui _self, char *custom_str, int length,int block){
+
+    _ui_print_div(_self);
+    _ui_print_str(_self, custom_str, length / block - 2);
+    _ui_print_div(_self);
+
+}
+
+
+void _ui_print_custom_row_sub(_ui _self, char *custom_str, int length, int block){
+
+    _ui_print_str(_self, custom_str, length / block - 1);
+    _ui_print_div(_self);
+
+}
+
+void _ui_print_custom_odd_fix(_ui _self, char *custom_str, int length, int block){
+
+    int odd_flag = length % block?1:0;
+    _ui_print_str(_self, custom_str, length / block - 1);
+
+    if(odd_flag){
+        int times = block - 2;
+        while(times > 0){
+            printf(" ");
+            times--;
+        }
+    }
+
+    _ui_print_div(_self);
+
+}
+
+void _ui_print_custom_row_end(_ui _self, int length){
+
     _ui_print_ln(_self);
     _ui_print_point(_self);
     _ui_print_line(_self, length - 2);

@@ -16,8 +16,7 @@ int main() {
     _new_ui(&ui);
 
     // 单元测试
-    input_school_info();
-    input_project_info();
+    input();
 
 }
 
