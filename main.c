@@ -28,9 +28,9 @@ int main() {
 
     list l;
     int a = 4;
-    _new_list(&l, sizeof(int), &a);
-    printf("%d",*(int*)l.head->data);
-
+    _new_list(&l, sizeof(int));
+    _list_push(&l,&a);
+    printf("%d",*(int*)(l.head->data));
     return 0;
 }
 

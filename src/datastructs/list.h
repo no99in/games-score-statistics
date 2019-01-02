@@ -10,7 +10,7 @@
 typedef struct node
 {
     void  * data;
-    struct node *next;
+    struct node * next;
 }node,* pnode;
 
 typedef struct list
@@ -21,6 +21,6 @@ typedef struct list
 }list,* plist;
 
 extern void _new_list(list *_self, int data_size);
-
+extern void _list_push(list * _self, void * data);
 
 #endif //GAMES_SCORE_STATISTICS_LIST_H
