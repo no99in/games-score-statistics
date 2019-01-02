@@ -24,8 +24,11 @@ int service_start(){
     list projects;
     _new_list(&projects, sizeof(project));
 
-
     // 单元测试
-    _input();
+    _input(&schools,&contacts,&projects);
+
+    printf("%s",((school*)schools.head->data)->name);
+
+    return 0;
 
 }

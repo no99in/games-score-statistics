@@ -77,7 +77,7 @@ project input_project_info(){
     return *p;
 
 }
-contact input_contact_info(school s ,project p ){
+contact input_contact_info(school s ,project p ,list *schools,list *projects,list *contacts){
 
     contact * c = (pcontact)malloc(sizeof(contact));
 
@@ -115,22 +115,36 @@ contact input_contact_info(school s ,project p ){
 
     if(_str_compare(input_is,project_type_is_3)==0||_str_compare(input_is,project_type_is_2)==0||_str_compare(input_is,project_type_is_1)==0){
         _ui_print_custom_head(ui,"请输入成绩\0",display_width);
-        int score = 0;
-        scanf("%d",&score);
+        scanf("%s",input);
+        int score = strtol(input,NULL,10);
         c->score = score;
         c->pid = p.id;
         c->sid = s.id;
         return *c;
     }
     if(_str_compare(input_is,project_type_isnot_1)==0||_str_compare(input_is,project_type_isnot_2)==0||_str_compare(input_is,project_type_isnot_3)==0){
-        _input();
+        _input( schools, contacts, projects);
     }
 }
 
-void _input(){
+void input_update_school_info(list *schools,school s){
+    _list_head_push(schools,&s);
+}
+void input_update_project_info(list *projects,project p){
+    _list_head_push(projects,&p);
+}
+void input_update_contact_info(list *contacts,contact c){
+    _list_head_push(contacts,&c);
+}
+
+void _input(list *schools,list *contacts,list *projects){
 
     school s = input_school_info();
     project p = input_project_info();
-    contact c = input_contact_info(s,p);
+    contact c = input_contact_info(s,p,schools,contacts,projects);
+
+    input_update_school_info(schools,s);
+    input_update_project_info(projects,p);
+    input_update_contact_info(contacts,c);
 
 }
