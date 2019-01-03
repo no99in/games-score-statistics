@@ -11,7 +11,7 @@ typedef struct project {
     long id;
     int type;
     str name;
-} project, *pproject;
+} project, *p_project;
 
 extern project new_project(project *_self);
 

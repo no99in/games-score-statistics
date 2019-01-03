@@ -31,9 +31,7 @@ int service_start() {
     output_project_info(&projects);
     output_contact_info(&contacts, &schools, &projects);
 
-//    printf("%s",((school*)schools.head->data)->name);
-//    printf("%s",((school*)schools.head->next->data)->name);
-//    printf("%s",((school*)schools.head->next->next->data)->name);
+    sort_project_by_score(1,&projects,&contacts,&schools);
 
     return 0;
 

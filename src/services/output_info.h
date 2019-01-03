@@ -21,11 +21,11 @@ extern void output_project_info(list *projects);
 
 extern void output_contact_info(list *contacts, list *schools, list *projects);
 
-static str output_sid_to_school_name(list *schools, int sid);
+static str output_sid_to_school_name(list *schools, long sid);
 
-static char *output_pid_to_project_type(list *projects, int pid);
+static char *output_pid_to_project_type(list *projects, long pid);
 
-static str output_pid_to_project_name(list *projects, int pid);
+static str output_pid_to_project_name(list *projects, long pid);
 
 
 #endif //GAMES_SCORE_STATISTICS_OUT_PUT_H

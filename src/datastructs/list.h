@@ -8,20 +8,22 @@
 #include "../../lib/_stdhead.h"
 #include "../../lib/_datastructhead.h"
 
-typedef struct node {
+typedef struct list_node {
     void *data;
-    struct node *next;
-} node, *pnode;
+    struct list_node *next;
+} list_node, *p_list_node;
 
 typedef struct list {
-    node *head;
+    list_node *head;
     int data_size;
     int length;
-} list, *plist;
+} list, *p_list;
 
 extern Status _new_list(list *_self, int data_size);
 
 extern Status _list_head_push(list *_self, void *data);
+
+extern Status _list_back_push(list *_self, void *data);
 
 extern void *_list_get(list _self, int i);
 

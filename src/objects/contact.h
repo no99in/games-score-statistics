@@ -11,7 +11,7 @@ typedef struct contact {
     long sid;
     long pid;
     int score;
-} contact, *pcontact;
+} contact, *p_contact;
 
 extern contact new_contact(contact *_self);
 

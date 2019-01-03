@@ -7,9 +7,14 @@
 
 
 #include "../objects/project.h"
+#include "../objects/contact.h"
 #include "../datastructs/list.h"
+#include "../datastructs/stack.h"
+#include "../../lib/_ui.h"
+#include "../../lib/_str.h"
+#include "output_info.h"
 
-extern void sort_project_by_score(list *projects, list *contacts);
+extern void sort_project_by_score(long pid, list *projects, list *contacts,list *school) ;
 
 extern void sort_man_project_by_score(list *projects, list *contacts);
 

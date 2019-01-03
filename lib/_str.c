@@ -103,3 +103,15 @@ extern str _str_long_to_str(long num){
 
 }
 
+str _str_int_to_str(long num) {
+
+    char * t =  (char*)malloc(sizeof(char)*10);
+
+    sprintf(t, "%d", num);
+
+    str res;
+
+    _str_assign(&res,t);
+
+    return res;
+}

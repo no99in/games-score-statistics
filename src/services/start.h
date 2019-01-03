@@ -8,6 +8,7 @@
 #include "input_info.h"
 #include "output_info.h"
 #include "../datastructs/list.h"
+#include "sort.h"
 
 extern int service_start();
 

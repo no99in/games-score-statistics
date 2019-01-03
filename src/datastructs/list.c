@@ -6,7 +6,7 @@
 
 Status _new_list(list *_self, int data_size) {
 
-    plist pl = (plist) malloc(sizeof(list));
+    p_list pl = (p_list) malloc(sizeof(list));
 
     pl->data_size = data_size;
     pl->length = 0;
@@ -26,6 +26,28 @@ Status _list_head_push(list *_self, void *data) {
 
 }
 
+Status _list_back_push(list *_self, void *data) {
+
+    if (!_self->head) {
+        list_node *pn = (list_node *) malloc(sizeof(list_node));
+        pn->data = malloc(_self->data_size);
+        pn->next = NULL;
+        memcpy(pn->data, data, _self->data_size);
+        _self->head = pn;
+        ++_self->length;
+        return OK;
+    }
+    list_node *pn = (list_node *) malloc(sizeof(list_node));
+    pn->data = malloc(_self->data_size);
+    pn->next = NULL;
+    memcpy(pn->data, data, _self->data_size);
+    list_node *ln = _self->head;
+    while (ln) { ln = ln->next; }
+    ln = pn;
+    ++_self->length;
+
+}
+
 extern void *_list_get(list _self, int i) {
 
     if (i > _self.length || i <= 0) {
@@ -34,7 +56,7 @@ extern void *_list_get(list _self, int i) {
 
     void *res = malloc(sizeof(_self.data_size));
 
-    node *n = _self.head;
+    list_node *n = _self.head;
 
     while (i - 1 > 0) {
         n = n->next;
@@ -53,7 +75,7 @@ extern Status _list_remove(list *_self, int i) {
         return ERR;
     }
 
-    node *n = _self->head;
+    list_node *n = _self->head;
 
     if (i == 1) {
 
@@ -94,7 +116,7 @@ Status _list_insert(list *_self, void *data, int i) {
 
     if (i == 1 && _self->length == 0) {
 
-        node *pn = (node *) malloc(sizeof(node));
+        list_node *pn = (list_node *) malloc(sizeof(list_node));
         pn->data = malloc(_self->data_size);
         memcpy(pn->data, data, _self->data_size);
         _self->head = pn;
@@ -108,8 +130,8 @@ Status _list_insert(list *_self, void *data, int i) {
         return ERR;
     }
 
-    node *n = _self->head;
-    node *pn = (node *) malloc(sizeof(node));
+    list_node *n = _self->head;
+    list_node *pn = (list_node *) malloc(sizeof(list_node));
     pn->data = malloc(_self->data_size);
     memcpy(pn->data, data, _self->data_size);
 

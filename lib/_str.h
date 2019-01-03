@@ -25,4 +25,6 @@ extern Status _str_copy(str *t, str *s);
 
 extern str _str_long_to_str(long num);
 
+extern str _str_int_to_str(long num);
+
 #endif //GAMES_SCORE_STATISTICS_STR_H

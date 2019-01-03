@@ -1,2 +1,8 @@
 #include "src/services/start.h"
-int main() {return service_start();}
+#include "src/datastructs/stack.h"
+
+int main() { return service_start();
+
+
+
+}

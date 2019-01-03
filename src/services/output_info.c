@@ -16,7 +16,7 @@ void output_school_info(list *schools) {
     _ui_print_custom_odd_fix(ui, "得分\0", display_width, 3);
     _ui_print_custom_row_end(ui, display_width);
 
-    node *n = schools->head;
+    list_node *n = schools->head;
 
     while (n) {
 
@@ -42,12 +42,12 @@ void output_project_info(list *projects) {
     _ui_print_custom_odd_fix(ui, "编号\0", display_width, 3);
     _ui_print_custom_row_end(ui, display_width);
 
-    node *n = projects->head;
+    list_node *n = projects->head;
 
     while (n) {
 
         _ui_print_custom_row_pre(ui, ((project *) n->data)->name.ch, display_width, 3);
-        _ui_print_custom_row_sub(ui, ((project *) n)->type ? "男子\0" : "女子\0", display_width, 3);
+        _ui_print_custom_row_sub(ui, ((project *) n->data)->type ? "男子\0" : "女子\0", display_width, 3);
         _ui_print_custom_odd_fix(ui, _str_long_to_str(((project *) n->data)->id).ch, display_width, 3);
         _ui_print_custom_row_end(ui, display_width);
 
@@ -70,7 +70,7 @@ void output_contact_info(list *contacts, list *schools, list *projects) {
     _ui_print_custom_odd_fix(ui, "项目成绩\0", display_width, 4);
     _ui_print_custom_row_end(ui, display_width);
 
-    node *n = contacts->head;
+    list_node *n = contacts->head;
 
     while (n) {
 
@@ -90,9 +90,9 @@ void output_contact_info(list *contacts, list *schools, list *projects) {
 
 }
 
-str output_sid_to_school_name(list *schools, int sid) {
+str output_sid_to_school_name(list *schools, long sid) {
 
-    node *sn = schools->head;
+    list_node *sn = schools->head;
 
     int flag = 0;
 
@@ -111,9 +111,9 @@ str output_sid_to_school_name(list *schools, int sid) {
 
 }
 
-str output_pid_to_project_name(list *projects, int pid) {
+str output_pid_to_project_name(list *projects, long pid) {
 
-    node *pn = projects->head;
+    list_node *pn = projects->head;
 
     int flag = 0;
 
@@ -132,9 +132,9 @@ str output_pid_to_project_name(list *projects, int pid) {
 
 }
 
-char *output_pid_to_project_type(list *projects, int pid) {
+char *output_pid_to_project_type(list *projects, long pid) {
 
-    node *pn = projects->head;
+    list_node *pn = projects->head;
 
     int flag = 0;
 
@@ -149,6 +149,6 @@ char *output_pid_to_project_type(list *projects, int pid) {
 
     }
 
-    return ((project *) pn)->type ? "男子\0" : "女子\0";
+    return ((project *) pn->data)->type ? "男子\0" : "女子\0";
 
 }

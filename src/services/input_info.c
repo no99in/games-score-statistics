@@ -18,7 +18,7 @@ school input_school_info() {
     str school_name;
     _str_assign(&school_name, input);
 
-    school *s = (pschool) malloc(sizeof(school));
+    school *s = (p_school) malloc(sizeof(school));
     _str_copy(&s->name, &school_name);
     s->id = school_get_id(*s);
 
@@ -30,7 +30,7 @@ school input_school_info() {
 
 project input_project_info() {
 
-    project *p = (pproject) malloc(sizeof(project));
+    project *p = (p_project) malloc(sizeof(project));
 
     char *input = (char *) malloc(sizeof(char) * 100);
 
@@ -85,7 +85,7 @@ project input_project_info() {
 
 contact input_contact_info(school s, project p, list *schools, list *projects, list *contacts) {
 
-    contact *c = (pcontact) malloc(sizeof(contact));
+    contact *c = (p_contact) malloc(sizeof(contact));
 
     _ui ui = _get_ui_instance();
     _ui_print_custom_head(ui, "请确认学校与项目\0", display_width);
@@ -154,7 +154,7 @@ void _input(list *schools, list *contacts, list *projects) {
 
 void input_update(list *schools, school *s, list *projects, project *p, list *contacts, contact *c) {
 
-    node *sn = schools->head;
+    list_node *sn = schools->head;
 
     int flag = 0;
 
@@ -175,13 +175,13 @@ void input_update(list *schools, school *s, list *projects, project *p, list *co
         s->id = ((school *) sn->data)->id;
 
 
-    node *pn = projects->head;
+    list_node *pn = projects->head;
 
     flag = 0;
 
     while (pn) {
 
-        if (_str_compare(((project *) pn->data)->name, p->name) == 0 && ((project *) pn->data)->id == p->id) {
+        if ((_str_compare(((project *) pn->data)->name, p->name) == 0) && ((project *)pn->data)->type == p->type) {
             flag = 1;
             break;
         }
@@ -193,12 +193,12 @@ void input_update(list *schools, school *s, list *projects, project *p, list *co
     if (!flag)
         _list_head_push(projects, p);
     else
-        p->id = ((school *) sn->data)->id;
+        p->id = ((school *) pn->data)->id;
 
     c->sid = s->id;
     c->pid = p->id;
 
-    node *cn = contacts->head;
+    list_node *cn = contacts->head;
 
     flag = 0;
 
