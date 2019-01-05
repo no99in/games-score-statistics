@@ -12,7 +12,7 @@
 #include "../objects/contact.h"
 #include "../datastructs/list.h"
 
-extern void _input(list *schools, list *contacts, list *projects);
+extern void _input(int times,list *schools, list *contacts, list *projects);
 
 static school input_school_info();
 

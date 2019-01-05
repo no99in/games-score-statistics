@@ -19,6 +19,8 @@ extern project create_project(project _self, long id, int type, str name);
 
 extern long project_get_id(project _self);
 
+extern long project_force_get_id();
+
 extern str project_get_name(project _self);
 
 extern int project_get_type(project _self);

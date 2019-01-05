@@ -33,6 +33,7 @@ extern void sort_project_by_score(long pid, list *projects, list *contacts,list 
 
     _ui ui = _get_ui_instance();
     int display_width = DISPLAY_WIDTH;
+    system("clear");
     _ui_print_custom_head(ui, "该项目信息\0", display_width);
     _ui_print_custom_row_pre(ui, "学校编号\0", display_width, 3);
     _ui_print_custom_row_sub(ui, "项目编号\0", display_width, 3);
@@ -66,20 +67,74 @@ extern void sort_project_by_score(long pid, list *projects, list *contacts,list 
 
     for (int i = 100; i >= 0; --i) {
 
-        //free(sort_bucket+i);
+        free((sort_bucket+i)->head);
 
     }
 
-
+    getchar();
+    getchar();
 
 }
 
-extern void sort_man_project_by_score(list *projects, list *contacts) {}
+extern void find_project(long pid,long sid, list *contacts){
+
+    p_list_node c = contacts->head;
+
+    _ui ui = _get_ui_instance();
+
+    int display_width = DISPLAY_WIDTH;
+
+    _ui_print_custom_head(ui, "这个学校\0", display_width);
+    _ui_print_custom_row_pre(ui, "项目名称\0", display_width, 4);
+    _ui_print_custom_row_sub(ui, "项目类型\0", display_width, 4);
+    _ui_print_custom_odd_fix(ui, "得分\0", display_width, 4);
+    _ui_print_custom_odd_fix(ui, "排名\0", display_width, 4);
+    _ui_print_custom_row_end(ui, display_width);
+
+
+    while (c) {
+
+        if (((contact *) c->data)->sid == sid ) {
+
+            _ui_print_custom_row_pre(ui, _str_int_to_str(((contact *) c->data)->sid).ch,
+                                     display_width, 4);
+            _ui_print_custom_row_sub(ui, _str_int_to_str(((contact *) c->data)->pid).ch,
+                                     display_width, 4);
+            _ui_print_custom_odd_fix(ui, _str_int_to_str(((contact *) c->data)->score).ch,
+                                     display_width, 4);
+            _ui_print_custom_odd_fix(ui, _str_int_to_str(((contact *) c->data)->score).ch,
+                                     display_width, 4);
+            _ui_print_custom_row_end(ui, display_width);
+
+        }
+
+        c = c->next;
+
+    }
+
+}
 
 extern void sort_woman_project_by_score(list *projects, list *contacts) {}
 
 extern void sort_school_by_score(list *projects, list *contacts) {
 
+
+
+
+}
+
+extern void test( list *projects, list *contacts,list *schools) {
+
+    long pid = project_force_get_id();
+
+    while(pid-- > 0){
+
+        sort_project_by_score(pid,projects,contacts,schools);
+
+    }
+
+    getchar();
+    getchar();
 
 
 }

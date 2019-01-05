@@ -9,7 +9,7 @@ void output_school_info(list *schools) {
 
     _ui ui = _get_ui_instance();
     int display_width = DISPLAY_WIDTH;
-
+    system("clear");
     _ui_print_custom_head(ui, "全部学校信息\0", display_width);
     _ui_print_custom_row_pre(ui, "名称\0", display_width, 3);
     _ui_print_custom_row_sub(ui, "编号\0", display_width, 3);
@@ -29,6 +29,9 @@ void output_school_info(list *schools) {
 
     }
 
+    getchar();
+    getchar();
+
 }
 
 void output_project_info(list *projects) {
@@ -36,6 +39,8 @@ void output_project_info(list *projects) {
     _ui ui = _get_ui_instance();
     int display_width = DISPLAY_WIDTH;
 
+
+    system("clear");
     _ui_print_custom_head(ui, "全部项目信息\0", display_width);
     _ui_print_custom_row_pre(ui, "名称\0", display_width, 3);
     _ui_print_custom_row_sub(ui, "类型\0", display_width, 3);
@@ -55,6 +60,8 @@ void output_project_info(list *projects) {
 
     }
 
+    getchar();
+    getchar();
 
 }
 

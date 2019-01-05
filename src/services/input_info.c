@@ -11,6 +11,7 @@ school input_school_info() {
     char *input = (char *) malloc(sizeof(char) * 100);
 
     _ui ui = _get_ui_instance();
+    system("clear");
     _ui_print_custom_head(ui, "请输入学校名称\0", display_width);
 
     scanf("%s", input);
@@ -35,12 +36,17 @@ project input_project_info() {
     char *input = (char *) malloc(sizeof(char) * 100);
 
     _ui ui = _get_ui_instance();
+
+    system("clear");
+
     _ui_print_custom_head(ui, "请输入项目名称\0", display_width);
 
     scanf("%s", input);
 
     str project_name;
     _str_assign(&project_name, input);
+
+    system("clear");
 
     _ui_print_custom_head(ui, "请输入项目类型\0", display_width);
 
@@ -88,6 +94,8 @@ contact input_contact_info(school s, project p, list *schools, list *projects, l
     contact *c = (p_contact) malloc(sizeof(contact));
 
     _ui ui = _get_ui_instance();
+
+    system("clear");
     _ui_print_custom_head(ui, "请确认学校与项目\0", display_width);
     _ui_print_custom_row_pre(ui, "学校\0", display_width, 3);
     _ui_print_custom_row_sub(ui, "项目\0", display_width, 3);
@@ -122,6 +130,7 @@ contact input_contact_info(school s, project p, list *schools, list *projects, l
 
     if (_str_compare(input_is, project_type_is_3) == 0 || _str_compare(input_is, project_type_is_2) == 0 ||
         _str_compare(input_is, project_type_is_1) == 0) {
+        system("clear");
         _ui_print_custom_head(ui, "请输入成绩\0", display_width);
         scanf("%s", input);
         int score = strtol(input, NULL, 10);
@@ -132,21 +141,25 @@ contact input_contact_info(school s, project p, list *schools, list *projects, l
     }
     if (_str_compare(input_is, project_type_isnot_1) == 0 || _str_compare(input_is, project_type_isnot_2) == 0 ||
         _str_compare(input_is, project_type_isnot_3) == 0) {
-        _input(schools, contacts, projects);
+        c->pid = -1;
+        c->sid = -1;
+        return *c;
     }
 }
 
 
-void _input(list *schools, list *contacts, list *projects) {
+extern void _input(int times,list *schools, list *contacts, list *projects) {
 
-    int i = 3;
+    int i = times;
 
-    while (i--) {
+    while (i-- > 0) {
         school s = input_school_info();
         project p = input_project_info();
         contact c = input_contact_info(s, p, schools, contacts, projects);
-
-        input_update(schools, &s, projects, &p, contacts, &c);
+        if(c.pid == -1 && c.sid == -1)
+            ++i;
+        else
+            input_update(schools, &s, projects, &p, contacts, &c);
     }
 
 }

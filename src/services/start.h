@@ -12,4 +12,8 @@
 
 extern int service_start();
 
+extern void service_menu();
+
+static void show_menu();
+
 #endif //GAMES_SCORE_STATISTICS_START_H
