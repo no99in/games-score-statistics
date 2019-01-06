@@ -5,7 +5,7 @@
 #ifndef GAMES_SCORE_STATISTICS_LOG_H
 #define GAMES_SCORE_STATISTICS_LOG_H
 
-#include "_stdhead.h"
+#include "../../lib/_stdhead.h"
 
 #define _LOG_BUFFER_SIZE 100;
 typedef struct _log {

@@ -1,6 +1,7 @@
 //
-// Created by moss on 1/1/19.
+// 莫斯创建 Created by moss on 1/1/19.
 //
+// 功能 : 提供了纯C语言编写的字符串C和h
 
 #ifndef GAMES_SCORE_STATISTICS_STR_H
 #define GAMES_SCORE_STATISTICS_STR_H
