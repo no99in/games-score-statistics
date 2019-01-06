@@ -11,7 +11,7 @@
 #include "../objects/contact.h"
 #include "../datastructs/list.h"
 #include "../datastructs/stack.h"
-#include "../../lib/_ui.h"
+#include "../views/_ui.h"
 #include "../../lib/_str.h"
 #include "output_info.h"
 

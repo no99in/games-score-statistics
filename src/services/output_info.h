@@ -6,7 +6,7 @@
 #define GAMES_SCORE_STATISTICS_OUT_PUT_H
 
 #include "../../lib/_str.h"
-#include "../../lib/_ui.h"
+#include "../views/_ui.h"
 #include "../objects/school.h"
 #include "../objects/project.h"
 #include "../objects/contact.h"
