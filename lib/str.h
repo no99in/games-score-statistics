@@ -3,7 +3,7 @@
  * @copyright    2019 moss@nodie.ink
  * @version      1.0.0
  * @author       莫斯莫斯 mossnodie
- * @file         _str.h
+ * @file         str.h
  * @date         2019-01-06
  */
 #ifndef GAMES_SCORE_STATISTICS_STR_H

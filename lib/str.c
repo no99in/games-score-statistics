@@ -1,12 +1,11 @@
-/*****************************************************************************
-* copyright    2019 moss@nodie.ink
-* filename     _str.h
-* description  纯C语言实现的字符串 pure c implementation of string
-* author       莫斯莫斯 mossnodie
-* version      1.0.0
-* date         2019/01/06
-* history
-*****************************************************************************/
+/**
+ * @description  纯C语言实现的字符串 pure c implementation of string
+ * @copyright    2019 moss@nodie.ink
+ * @version      1.0.0
+ * @author       莫斯莫斯 mossnodie
+ * @file         str.c
+ * @date         2019-01-06
+ */
 #include "str.h"
 
 STATUS _str_assign(str *t, const char *s) {
@@ -77,18 +76,12 @@ STATUS _str_concat(str *t, str s1, str s2) {
     return SUCCESS;
 }
 
-extern str _str_long_to_str(long num) {
-
+str _str_long_to_str(long num) {
     char *t = (char *) malloc(sizeof(char) * 10);
-
     sprintf(t, "%ld", num);
-
     str res;
-
     _str_assign(&res, t);
-
     return res;
-
 }
 
 str _str_int_to_str(long num) {
