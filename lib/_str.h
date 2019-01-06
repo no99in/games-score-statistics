@@ -1,7 +1,12 @@
-//
-// 莫斯创建 Created by moss on 1/1/19.
-//
-// 功能 : 提供了纯C语言编写的字符串C和h
+/*****************************************************************************
+* copyright   : 2019 moss@nodie.ink
+* filename    : _str.h
+* description : 纯C语言实现的字符串 pure c implementation of string
+* author      : 莫斯莫斯 mossnodie
+* version     : 1.0.0
+* date        : 2019/01/06
+* history     :
+*****************************************************************************/
 
 #ifndef GAMES_SCORE_STATISTICS_STR_H
 #define GAMES_SCORE_STATISTICS_STR_H
@@ -14,7 +19,7 @@ typedef struct str {
     int length;
 } str, *pstr;
 
-extern Status _str_assign(str *t, char *s);
+extern int _str_assign(str *t, char *s);
 
 extern int _str_length(str s);
 

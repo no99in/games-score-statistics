@@ -1,7 +1,12 @@
-//
-// Created by moss on 1/1/19.
-//
-
+/*****************************************************************************
+* copyright   : 2019 moss@nodie.ink
+* filename    : _str.h
+* description : 纯C语言实现的字符串 pure c implementation of string
+* author      : 莫斯莫斯 mossnodie
+* version     : 1.0.0
+* date        : 2019/01/06
+* history     :
+*****************************************************************************/
 #include "_str.h"
 
 extern Status _str_copy(str * t, str * s){
