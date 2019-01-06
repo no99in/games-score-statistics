@@ -5,7 +5,7 @@
 #ifndef GAMES_SCORE_STATISTICS_OUT_PUT_H
 #define GAMES_SCORE_STATISTICS_OUT_PUT_H
 
-#include "../../lib/_str.h"
+#include "../../lib/str.h"
 #include "../views/_ui.h"
 #include "../objects/school.h"
 #include "../objects/project.h"

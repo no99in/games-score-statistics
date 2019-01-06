@@ -9,7 +9,7 @@
 #ifndef GAMES_SCORE_STATISTICS_STR_H
 #define GAMES_SCORE_STATISTICS_STR_H
 
-#include "_stdhead.h"
+#include "stdhead.h"
 
 /**
  * @param length 字符串的长度

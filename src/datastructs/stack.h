@@ -5,7 +5,7 @@
 #ifndef GAMES_SCORE_STATISTICS_STACK_H
 #define GAMES_SCORE_STATISTICS_STACK_H
 
-#include "../../lib/_stdhead.h"
+#include "../../lib/stdhead.h"
 
 typedef struct stack_node {
     void *data;

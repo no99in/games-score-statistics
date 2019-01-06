@@ -5,7 +5,7 @@
 #ifndef GAMES_SCORE_STATISTICS_LIST_H
 #define GAMES_SCORE_STATISTICS_LIST_H
 
-#include "../../lib/_stdhead.h"
+#include "../../lib/stdhead.h"
 
 
 typedef struct list_node {

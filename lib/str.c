@@ -7,7 +7,7 @@
 * date         2019/01/06
 * history
 *****************************************************************************/
-#include "_str.h"
+#include "str.h"
 
 STATUS _str_assign(str *t, const char *s) {
     // NULL处理 to deal with NULL

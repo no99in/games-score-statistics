@@ -5,7 +5,7 @@
 #ifndef GAMES_SCORE_STATISTICS_INPUT_INFO_H
 #define GAMES_SCORE_STATISTICS_INPUT_INFO_H
 
-#include "../../lib/_str.h"
+#include "../../lib/str.h"
 #include "../views/_ui.h"
 #include "../objects/school.h"
 #include "../objects/project.h"

@@ -5,8 +5,8 @@
 #define GAMES_SCORE_STATISTICS_UI_H
 
 #include "../../ui_setting.h"
-#include "../logs/_log.h"
-#include "../../lib/_stdhead.h"
+#include "../logs/log.h"
+#include "../../lib/stdhead.h"
 
 #define _UI_ZERO_STR "空串\0"
 #define _UI_NULL_STR "空值\0"

@@ -12,7 +12,7 @@
 #include "../datastructs/list.h"
 #include "../datastructs/stack.h"
 #include "../views/_ui.h"
-#include "../../lib/_str.h"
+#include "../../lib/str.h"
 #include "output_info.h"
 
 extern void sort_project_by_score(long pid, list *projects, list *contacts,list *school) ;

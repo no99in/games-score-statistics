@@ -2,7 +2,7 @@
 // Created by moss on 1/1/19.
 //
 
-#include "../../lib/_str.h"
+#include "../../lib/str.h"
 
 #ifndef GAMES_SCORE_STATISTICS_SCHOOL_H
 #define GAMES_SCORE_STATISTICS_SCHOOL_H

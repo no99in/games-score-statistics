@@ -2,7 +2,7 @@
 // Created by mossnodie on 12/24/18.
 //
 
-#include "_log.h"
+#include "log.h"
 
 _log *_log_instance = NULL;
 

@@ -5,7 +5,7 @@
 #ifndef GAMES_SCORE_STATISTICS_PROJECT_H
 #define GAMES_SCORE_STATISTICS_PROJECT_H
 
-#include "../../lib/_str.h"
+#include "../../lib/str.h"
 
 typedef struct project {
     long id;

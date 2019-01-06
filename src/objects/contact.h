@@ -5,7 +5,7 @@
 #ifndef GAMES_SCORE_STATISTICS_CONTACT_H
 #define GAMES_SCORE_STATISTICS_CONTACT_H
 
-#include "../../lib/_str.h"
+#include "../../lib/str.h"
 
 typedef struct contact {
     long sid;
