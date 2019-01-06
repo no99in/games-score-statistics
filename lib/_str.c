@@ -9,12 +9,12 @@
 *****************************************************************************/
 #include "_str.h"
 
-extern Status _str_copy(str * t, str * s){
+extern STATUS _str_copy(str *t, str *s) {
 
-    pstr pt = (pstr)malloc(sizeof(str));
-    pt->ch = (char*)malloc(sizeof(char)*s->length);
+    p_str pt = (p_str) malloc(sizeof(str));
+    pt->ch = (char *) malloc(sizeof(char) * s->length);
     int length = s->length;
-    while(--length >= 0){
+    while (--length >= 0) {
         pt->ch[length] = s->ch[length];
     }// 将 s 赋值给 pt->ch
     pt->length = s->length;
@@ -27,82 +27,75 @@ extern Status _str_copy(str * t, str * s){
 
 }
 
-extern Status _str_assign(str * t, char *s){
-
-    if(!s){
+STATUS _str_assign(str *t, char *s) {
+    // NULL处理 to deal with NULL
+    if (!s) {
         t->ch = NULL;
         t->length = 0;
         return 0;
-    }// if NULL 处理
-
-    pstr pt = (pstr)malloc(sizeof(str));
-    if(!pt)
-        exit(OVERFLOW);
-
+    }
+    // 计算字符串s的长度 calculate the length of the char* s
     int length = 0;
-
-    char * p = s;
-
-    while(*p){
+    char *c = s;
+    while (*c != '\0') {
         ++length;
-        ++p;
-    }// while 计算 s 长度
-
-    pt->ch = (char*)malloc(sizeof(char) * length);
-    if(!pt->ch)
+        ++c;
+    }
+    // 为t开辟空间 malloc space for str t
+    p_str ps = (p_str) malloc(sizeof(str));
+    if (!ps)
         exit(OVERFLOW);
-
-    pt->length = length;// 将 length 赋值给 pt->length
-
-    p = s;
-    while(--length >= 0){
-        (pt->ch)[length] = p[length];
-    }// 将 s 赋值给 pt->ch
-
-    *t = *pt;// 将 pt 赋值给 t
-
-    free(pt);// 释放 pt
-
+    ps->ch = (char *) malloc(sizeof(char) * length);
+    if (!ps->ch)
+        exit(OVERFLOW);
+    // 为t赋值 assign for t
+    for (c = s; length >= 0; --length) {
+        (ps->ch)[length] = c[length];
+    }
+    ps->length = length;
+    // *t = *ps
+    memset(t, ps, sizeof(str));
+    free(ps);
     return OK;
-
 }
-extern int _str_length(str s){
+
+extern int _str_length(str s) {
     return s.length;
 }
 
-extern int _str_compare(str s1, str s2){
-    if(s1.length!=s2.length)
-        return s1.length-s2.length;
+extern int _str_compare(str s1, str s2) {
+    if (s1.length != s2.length)
+        return s1.length - s2.length;
     else
-        for(int i = 0 ; i<s1.length ; i++)
-            if(s1.ch[i]-s2.ch[i])
-                return s1.ch[i]-s2.ch[i];
+        for (int i = 0; i < s1.length; i++)
+            if (s1.ch[i] - s2.ch[i])
+                return s1.ch[i] - s2.ch[i];
     return 0;
 }
 
-extern Status _str_concat(pstr t, str s1, str s2){
-    pstr pt = (pstr)malloc(sizeof(str));
-    pt->length = s1.length+s2.length;
-    pt->ch = (char*)malloc(sizeof(char)*(pt->length));
-    for(int i = 0;i < s1.length;i++){
+extern Status _str_concat(p_str t, str s1, str s2) {
+    p_str pt = (p_str) malloc(sizeof(str));
+    pt->length = s1.length + s2.length;
+    pt->ch = (char *) malloc(sizeof(char) * (pt->length));
+    for (int i = 0; i < s1.length; i++) {
         (pt->ch)[i] = (s1.ch)[i];
     }
-    for(int i = s1.length;i < s2.length+s1.length;i++){
-        (pt->ch)[i] = (s2.ch)[i-s1.length];
+    for (int i = s1.length; i < s2.length + s1.length; i++) {
+        (pt->ch)[i] = (s2.ch)[i - s1.length];
     }
     *t = *pt;
     free(pt);
 }
 
-extern str _str_long_to_str(long num){
+extern str _str_long_to_str(long num) {
 
-    char * t =  (char*)malloc(sizeof(char)*10);
+    char *t = (char *) malloc(sizeof(char) * 10);
 
     sprintf(t, "%ld", num);
 
     str res;
 
-    _str_assign(&res,t);
+    _str_assign(&res, t);
 
     return res;
 
@@ -110,13 +103,13 @@ extern str _str_long_to_str(long num){
 
 str _str_int_to_str(long num) {
 
-    char * t =  (char*)malloc(sizeof(char)*10);
+    char *t = (char *) malloc(sizeof(char) * 10);
 
     sprintf(t, "%d", num);
 
     str res;
 
-    _str_assign(&res,t);
+    _str_assign(&res, t);
 
     return res;
 }

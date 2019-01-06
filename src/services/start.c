@@ -6,21 +6,21 @@
 
 int service_start() {
 
-    //  系统日志
+    //  create log 创建系统日志
     _log log;
     _new_log(&log);
 
-    // ui界面构建
+    // create ui 创建UI
     _ui ui;
     _new_ui(&ui);
 
-    // 创建 school-list
+    // create school-list 创建 school-list
     list schools;
     _new_list(&schools, sizeof(school));
-    // 创建 contact-list
+    // create contacts-list 创建 contact-list
     list contacts;
     _new_list(&contacts, sizeof(contact));
-    // 创建 project-list
+    // create projects-list 创建 project-list
     list projects;
     _new_list(&projects, sizeof(project));
 
@@ -31,7 +31,7 @@ int service_start() {
 //    output_contact_info(&contacts, &schools, &projects);
 //    sort_project_by_score(1,&projects,&contacts,&schools);
 
-    service_menu(&schools,  &projects,&contacts);
+    service_menu(&schools, &projects, &contacts);
 
     return 0;
 
@@ -59,7 +59,7 @@ extern void service_menu(list *schools, list *p, list *c) {
                 output_project_info(p);
                 break;
             case 4:
-                test(p,c,schools);
+                test(p, c, schools);
                 break;
             case 5:
                 break;
@@ -73,7 +73,7 @@ extern void service_menu(list *schools, list *p, list *c) {
 }
 
 
-void show_menu(){
+void show_menu() {
 
     _ui ui = _get_ui_instance();
     int length = DISPLAY_WIDTH;

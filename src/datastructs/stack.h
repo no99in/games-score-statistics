@@ -6,7 +6,6 @@
 #define GAMES_SCORE_STATISTICS_STACK_H
 
 #include "../../lib/_stdhead.h"
-#include "../../lib/_datastructhead.h"
 
 typedef struct stack_node {
     void *data;
