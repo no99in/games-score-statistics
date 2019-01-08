@@ -1,19 +1,12 @@
-//
-// Created by moss on 1/2/19.
-//
-
 #include "start.h"
 
 int service_start() {
-
     //  create log 创建系统日志
     _log log;
     _new_log(&log);
-
     // create ui 创建UI
     _ui ui;
     _new_ui(&ui);
-
     // create school-list 创建 school-list
     list schools;
     _new_list(&schools, sizeof(school));
@@ -23,38 +16,23 @@ int service_start() {
     // create projects-list 创建 project-list
     list projects;
     _new_list(&projects, sizeof(project));
-
-    // 单元测试
-//    _input(&schools, &contacts, &projects);
-//    output_school_info(&schools);
-//    output_project_info(&projects);
-//    output_contact_info(&contacts, &schools, &projects);
-//    sort_project_by_score(1,&projects,&contacts,&schools);
-
     _file_to_schools(&schools);
     _files_to_project(&projects);
     _file_to_contacts(&contacts);
-
     service_menu(&schools, &projects, &contacts);
-
     return 0;
-
 }
 
-extern void service_menu(list *schools, list *projects, list *contacts) {
-
+void service_menu(list *schools, list *projects, list *contacts) {
     char *scan = (char *) malloc(sizeof(char) * 5);
-
     while (1) {
-
         show_menu();
-
         scanf("%s", scan);
-        char * END;
-        switch (strtol(scan,&END,10)) {
+        char *END;
+        switch (strtol(scan, &END, 10)) {
             case 1:
                 scanf("%s", scan);
-                _input(strtol(scan,&END,10), schools, contacts, projects);
+                _input(strtol(scan, &END, 10), schools, contacts, projects);
                 break;
             case 2:
                 calculate_school_socre(projects, contacts, schools);
@@ -63,7 +41,6 @@ extern void service_menu(list *schools, list *projects, list *contacts) {
             case 3:
                 calculate_school_socre(projects, contacts, schools);
                 output_man_project_rank(schools);
-
                 break;
             case 4:
                 calculate_school_socre(projects, contacts, schools);
@@ -72,28 +49,25 @@ extern void service_menu(list *schools, list *projects, list *contacts) {
             case 6:
                 scanf("%s", scan);
                 sort_school_by_score(contacts);
-                output_project_rank(strtol(scan,&END,10),projects,contacts,schools);
+                output_project_rank(strtol(scan, &END, 10), projects, contacts, schools);
                 break;
             case 5:
                 scanf("%s", scan);
-                output_school_info_by_num(strtol(scan,&END,10),schools,contacts,projects);
+                output_school_info_by_num(strtol(scan, &END, 10), schools, contacts, projects);
                 break;
             case 7:
                 _schools_to_file(schools);
                 _contacts_to_file(contacts);
                 _projects_to_file(projects);
-                break;
+                exit(0);
         }
     }
-
 }
 
 
 void show_menu() {
-
     _ui ui = _get_ui_instance();
     int length = DISPLAY_WIDTH;
-
     system("clear");
     _ui_print_head(ui, length);
     _ui_print_custom(ui, "录 入 成 绩\0", length);
@@ -103,5 +77,4 @@ void show_menu() {
     _ui_print_custom(ui, "按 学 校 查 询 信 息\0", length);
     _ui_print_custom(ui, "按 项 目 查 询 信 息\0", length);
     _ui_print_custom(ui, "保 存 并 退 出\0", length);
-
 }
