@@ -9,7 +9,7 @@
 
 #include "stack.h"
 
-extern STATUS _new_stack(stack *_self, int data_size) {
+STATUS _new_stack(stack *_self, int data_size) {
     p_stack ps = (p_stack) malloc(sizeof(stack));
     if (!ps) return OVERFLOW;
     ps->data_size = data_size;
@@ -20,7 +20,7 @@ extern STATUS _new_stack(stack *_self, int data_size) {
     return SUCCESS;
 }
 
-extern STATUS _stack_head_push(stack *_self, void *data) {
+STATUS _stack_head_push(stack *_self, void *data) {
     p_stack_node psn = (p_stack_node) malloc(sizeof(p_stack_node));
     psn->data = malloc(_self->data_size);
     memcpy(psn->data, data, _self->data_size);
@@ -33,7 +33,7 @@ extern STATUS _stack_head_push(stack *_self, void *data) {
     }
 }
 
-extern void *_stack_head_pop(stack *_self) {
+void *_stack_head_pop(stack *_self) {
     void *p_snd = malloc(_self->data_size);
     memcpy(p_snd, _self->head->data, _self->data_size);
     if (!_self->head->next) {
