@@ -12,7 +12,7 @@
 STATUS _schools_to_file(list *schools) {
     FILE *_p_f = NULL;
     _p_f = fopen("./sources/schools.dat", "w+");
-    fprintf(_p_f, "\n");
+    fprintf(_p_f, "000\n");
     list_node *ln = schools->head;
     while (ln) {
         fprintf(_p_f, "%ld\n", ((school *) ln->data)->id);
@@ -29,7 +29,7 @@ STATUS _schools_to_file(list *schools) {
 STATUS _projects_to_file(list *projects) {
     FILE *_p_f = NULL;
     _p_f = fopen("./sources/projects.dat", "w+");
-    fprintf(_p_f, "\n");
+    fprintf(_p_f, "000\n");
     list_node *ln = projects->head;
     while (ln) {
         fprintf(_p_f, "%ld\n", ((project *) ln->data)->id);
@@ -43,7 +43,7 @@ STATUS _projects_to_file(list *projects) {
 STATUS _contacts_to_file(list *contacts) {
     FILE *_p_f = NULL;
     _p_f = fopen("./sources/contacts.dat", "w+");
-    fprintf(_p_f, "\n");
+    fprintf(_p_f, "000\n");
     list_node *ln = contacts->head;
     while (ln) {
         fprintf(_p_f, "%ld\n", ((contact *) ln->data)->pid);
@@ -52,7 +52,6 @@ STATUS _contacts_to_file(list *contacts) {
         ln = ln->next;
     }
     fclose(_p_f);
-
 }
 
 
@@ -65,7 +64,7 @@ STATUS _file_to_schools(list *schools) {
     long end = ftell(_p_f);
     fseek(_p_f, 0L, SEEK_SET);
     long start = ftell(_p_f);
-    fscanf(_p_f, "%s\n", buff);
+    fscanf(_p_f, "%s0\n", buff);
     while (end != start) {
         school s;
         fscanf(_p_f, "%s\n", buff);
@@ -82,10 +81,11 @@ STATUS _file_to_schools(list *schools) {
         school_get_id(s);
         start = ftell(_p_f);
     }
+    free(buff);
     fclose(_p_f);
 }
 
-STATUS _files_to_project(list *projects) {
+STATUS _file_to_projects(list *projects) {
     FILE *_p_f = NULL;
     _p_f = fopen("./sources/projects.dat", "r+");
     if (!_p_f) return ERROR;
@@ -94,7 +94,7 @@ STATUS _files_to_project(list *projects) {
     long end = ftell(_p_f);
     fseek(_p_f, 0L, SEEK_SET);
     long start = ftell(_p_f);
-    fscanf(_p_f, "%s\n", buff);
+    fscanf(_p_f, "%s0\n", buff);
     while (end != start) {
         project p;
         fscanf(_p_f, "%s\n", buff);
@@ -120,7 +120,7 @@ STATUS _file_to_contacts(list *contacts) {
     long end = ftell(_p_f);
     fseek(_p_f, 0L, SEEK_SET);
     long start = ftell(_p_f);
-    fscanf(_p_f, "%s\n", buff);
+    fscanf(_p_f, "%s0\n", buff);
     while (end != start) {
         contact c;
         fscanf(_p_f, "%s\n", buff);

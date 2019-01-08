@@ -36,7 +36,7 @@ extern STATUS _contacts_to_file(list *contacts);
  */
 extern STATUS _file_to_schools(list *schools);
 
-extern STATUS _files_to_project(list *projects);
+extern STATUS _file_to_projects(list *projects);
 
 extern STATUS _file_to_contacts(list *contacts);
 
