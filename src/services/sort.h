@@ -13,11 +13,13 @@
 #include "../datastructs/stack.h"
 #include "../views/_ui.h"
 #include "../../lib/str.h"
-#include "output_info.h"
+#include "output.h"
 
 extern void sort_project_by_score(long pid, list *projects, list *contacts,list *school) ;
 
 extern void calculate_school_socre( list *projects, list *contacts,list *schools);
+extern void calculate_man_project_socre( list *projects, list *contacts,list *schools);
+extern void calculate_woman_project_socre( list *projects, list *contacts,list *schools);
 
 extern void calculate_man_projects_socre(list *projects, list *contacts, list *schools);
 
@@ -25,7 +27,7 @@ extern void sort_man_project_by_score_no_input(long pid, list *projects, list *c
 
 extern void sort_woman_project_by_score(list *projects, list *contacts);
 
-extern void sort_school_by_score(list *projects, list *contacts);
+extern void sort_school_by_score(list *contacts);
 
 extern void test(list *projects, list *contacts,list *school);
 

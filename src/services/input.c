@@ -2,7 +2,7 @@
 // Created by moss on 1/2/19.
 //
 
-#include "input_info.h"
+#include "input.h"
 
 int display_width = DISPLAY_WIDTH;
 

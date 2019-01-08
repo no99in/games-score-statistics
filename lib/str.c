@@ -111,6 +111,23 @@ extern STATUS _str_copy(str *t, str *s) {
 
     free(pt);
 
-    return OK;
+    return SUCCESS;
+
+}
+
+
+extern long _str_str_to_long(char* un_num){
+
+    char* END = NULL;
+
+    return strtol(un_num,&END,10);
+
+}
+
+extern int _str_str_to_int(char*  un_num){
+
+    char* END = NULL;
+
+    return strtol(un_num,&END,10);
 
 }

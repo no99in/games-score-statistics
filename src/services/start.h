@@ -5,11 +5,11 @@
 #ifndef GAMES_SCORE_STATISTICS_START_H
 #define GAMES_SCORE_STATISTICS_START_H
 
-#include "input_info.h"
-#include "output_info.h"
+#include "input.h"
+#include "output.h"
 #include "../datastructs/list.h"
 #include "sort.h"
-
+#include "../dao/tofile.h"
 extern int service_start();
 
 extern void service_menu();

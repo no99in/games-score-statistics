@@ -4,7 +4,7 @@
 
 #include "list.h"
 
-Status _new_list(list *_self, int data_size) {
+STATUS _new_list(list *_self, int data_size) {
 
     p_list pl = (p_list) malloc(sizeof(list));
 
@@ -16,17 +16,17 @@ Status _new_list(list *_self, int data_size) {
 
     free(pl);
 
-    return OK;
+    return SUCCESS;
 
 }
 
-Status _list_head_push(list *_self, void *data) {
+STATUS _list_head_push(list *_self, void *data) {
 
     return _list_insert(_self, data, 1);
 
 }
 
-Status _list_back_push(list *_self, void *data) {
+STATUS _list_back_push(list *_self, void *data) {
 
     if (!_self->head) {
         list_node *pn = (list_node *) malloc(sizeof(list_node));
@@ -35,7 +35,7 @@ Status _list_back_push(list *_self, void *data) {
         memcpy(pn->data, data, _self->data_size);
         _self->head = pn;
         ++_self->length;
-        return OK;
+        return SUCCESS;
     }
     list_node *pn = (list_node *) malloc(sizeof(list_node));
     pn->data = malloc(_self->data_size);
@@ -69,10 +69,10 @@ extern void *_list_get(list _self, int i) {
 
 }
 
-extern Status _list_remove(list *_self, int i) {
+extern STATUS _list_remove(list *_self, int i) {
 
     if (i > _self->length || i <= 0) {
-        return ERR;
+        return ERROR;
     }
 
     list_node *n = _self->head;
@@ -84,16 +84,16 @@ extern Status _list_remove(list *_self, int i) {
             free(_self->head);
             _self->head = NULL;
             --_self->length;
-            return OK;
+            return SUCCESS;
 
         } else if (_self->length == 0) {
-            return OK;
+            return SUCCESS;
         } else {
 
             _self->head = _self->head->next;
             free(n);
             --_self->length;
-            return OK;
+            return SUCCESS;
 
         }
 
@@ -108,13 +108,13 @@ extern Status _list_remove(list *_self, int i) {
         n->next = n->next->next;
 
         --_self->length;
-        return OK;
+        return SUCCESS;
 
     }
 
 }
 
-Status _list_insert(list *_self, void *data, int i) {
+STATUS _list_insert(list *_self, void *data, int i) {
 
     if (i == 1 && _self->length == 0) {
 
@@ -124,12 +124,12 @@ Status _list_insert(list *_self, void *data, int i) {
         _self->head = pn;
         _self->head->next = NULL;
         ++_self->length;
-        return OK;
+        return SUCCESS;
 
     }
 
     if (i > _self->length || i <= 0) {
-        return ERR;
+        return ERROR;
     }
 
     list_node *n = _self->head;
@@ -141,7 +141,7 @@ Status _list_insert(list *_self, void *data, int i) {
         pn->next = n;
         _self->head = pn;
         ++_self->length;
-        return OK;
+        return SUCCESS;
     }
 
     while (i - 2 > 0) {
@@ -152,6 +152,6 @@ Status _list_insert(list *_self, void *data, int i) {
     pn->next = n->next;
     n->next = pn;
     ++_self->length;
-    return OK;
+    return SUCCESS;
 
 }

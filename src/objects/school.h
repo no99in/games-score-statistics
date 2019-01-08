@@ -11,6 +11,8 @@ typedef struct school {
     long id;
     str name;
     int score;
+    int man_score;
+    int woman_score;
 } school, *p_school;
 
 extern school new_school(school *_self);

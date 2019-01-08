@@ -18,9 +18,9 @@ typedef struct stack {
     int length;
 } stack, *p_stack;
 
-extern Status _new_stack(stack *_self, int data_size);
+extern STATUS _new_stack(stack *_self, int data_size);
 
-extern Status _stack_head_push(stack *_self, void *data);
+extern STATUS _stack_head_push(stack *_self, void *data);
 
 extern void * _stack_head_pop(stack *_self);
 

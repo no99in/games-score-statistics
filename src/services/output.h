@@ -19,9 +19,16 @@ extern void output_school_info(list *schools);
 
 extern void output_school_rank(list *schools);
 
+extern void output_school_info_by_num(long sid,list *schools,list *contacts,list *projects);
+
 extern void output_project_info(list *projects);
 
 extern void output_project_rank(long pid,list *projects,list *contacts,list *school);
+
+extern void output_man_project_rank(list *schools);
+
+extern void output_woman_project_rank(list *schools);
+
 
 extern void output_contact_info(list *contacts, list *schools, list *projects);
 

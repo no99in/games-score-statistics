@@ -53,4 +53,8 @@ extern str _str_long_to_str(long num);
 
 extern str _str_int_to_str(int num);
 
+extern long _str_str_to_long(char *un_num);
+
+extern int _str_str_to_int(char *un_num);
+
 #endif //GAMES_SCORE_STATISTICS_STR_H

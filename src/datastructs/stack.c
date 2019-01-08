@@ -5,7 +5,7 @@
 #include "stack.h"
 
 
-extern Status _new_stack(stack *_self, int data_size) {
+extern STATUS _new_stack(stack *_self, int data_size) {
 
     p_stack ps = (p_stack) malloc(sizeof(stack));
 
@@ -17,11 +17,11 @@ extern Status _new_stack(stack *_self, int data_size) {
 
     free(ps);
 
-    return OK;
+    return SUCCESS;
 
 }
 
-extern Status _stack_head_push(stack *_self, void *data) {
+extern STATUS _stack_head_push(stack *_self, void *data) {
 
     p_stack_node psn = (p_stack_node) malloc(sizeof(p_stack_node));
 

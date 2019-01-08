@@ -31,6 +31,10 @@ int service_start() {
 //    output_contact_info(&contacts, &schools, &projects);
 //    sort_project_by_score(1,&projects,&contacts,&schools);
 
+    _file_to_schools(&schools);
+    _files_to_project(&projects);
+    _file_to_contacts(&contacts);
+
     service_menu(&schools, &projects, &contacts);
 
     return 0;
@@ -57,16 +61,27 @@ extern void service_menu(list *schools, list *projects, list *contacts) {
                 output_school_info(schools);
                 break;
             case 3:
-                output_project_rank(1,projects,contacts,schools);
-                break;
-            case 4:
+                calculate_school_socre(projects, contacts, schools);
+                output_man_project_rank(schools);
 
                 break;
-            case 5:
+            case 4:
+                calculate_school_socre(projects, contacts, schools);
+                output_woman_project_rank(schools);
                 break;
             case 6:
+                scanf("%s", scan);
+                sort_school_by_score(contacts);
+                output_project_rank(strtol(scan,&END,10),projects,contacts,schools);
+                break;
+            case 5:
+                scanf("%s", scan);
+                output_school_info_by_num(strtol(scan,&END,10),schools,contacts,projects);
                 break;
             case 7:
+                _schools_to_file(schools);
+                _contacts_to_file(contacts);
+                _projects_to_file(projects);
                 break;
         }
     }

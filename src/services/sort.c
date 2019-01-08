@@ -133,15 +133,34 @@ void sort_shcool_by_score_no_input(long pid, list *projects, list *contacts, lis
 
             while (sn) {
 
-                if(sum>0 && i!=0){
+                if (sum > 0 && i != 0) {
+
+                    list_node *p = projects->head;
+                    while (p) {
+                        if (((project *) p->data)->id == ((contact *) sn->data)->pid) {
+                            break;
+                        }
+                        p = p->next;
+                    }
+
+
                     list_node *s = schools->head;
 
 
-                    while(s){
-                        if(((school*)s->data)->id == ((contact *) sn->data)->sid){
-                            if(sum == 3)((school*)s->data)->score+=5;
-                            if(sum == 2)((school*)s->data)->score+=3;
-                            if(sum == 1)((school*)s->data)->score+=2;
+                    while (s) {
+                        if (((school *) s->data)->id == ((contact *) sn->data)->sid) {
+                            if (sum == 3)((school *) s->data)->score += 5;
+                            if (sum == 3)
+                                ((project *) p->data)->type ? (((school *) s->data)->man_score += 5)
+                                                            : (((school *) s->data)->woman_score += 5);
+                            if (sum == 2)((school *) s->data)->score += 3;
+                            if (sum == 2)
+                                ((project *) p->data)->type ? (((school *) s->data)->man_score += 3)
+                                                            : (((school *) s->data)->woman_score += 3);
+                            if (sum == 1)((school *) s->data)->score += 2;
+                            if (sum == 1)
+                                ((project *) p->data)->type ? (((school *) s->data)->man_score += 2)
+                                                            : (((school *) s->data)->woman_score += 2);
                         }
                         s = s->next;
                     }
@@ -219,22 +238,46 @@ void sort_shcool_by_score_no_input(long pid, list *projects, list *contacts, lis
 
 extern void sort_woman_project_by_score(list *projects, list *contacts) {}
 
-extern void sort_school_by_score(list *projects, list *contacts) {
+extern void sort_school_by_score(list *contacts) {
+
+    list_node *ln = contacts->head;
+
+    int flag = 0;
+    for (int i = 0; i < contacts->length - 1; i++) {
+        flag = 0;
+        while (ln->next) {
+            if (((contact *) ln->data)->score < ((contact *) ln->next->data)->score) {
+                flag = 1;
+                void *p_data = malloc(contacts->data_size);
+                memcpy(p_data, ln->data, contacts->data_size);
+                memcpy(ln->data, ln->next->data, contacts->data_size);
+                memcpy(ln->next->data, p_data, contacts->data_size);
+                free(p_data);
+            }
+            ln = ln->next;
+        }
+        if (!flag)
+            break;
+        ln = contacts->head;
+    }
+
 
 
 }
 
 void calculate_school_socre(list *projects, list *contacts, list *schools) {
 
-    if(!projects->head)
+    if (!projects->head)
         return;
-    long sum_id = project_get_id(*(project*)projects->head);
-    project_reset_id(*(project*)projects->head);
+    long sum_id = project_get_id(*(project *) projects->head);
+    project_reset_id(*(project *) projects->head);
 
-    list_node * s =  schools->head;
-    while(s){
-        ((school*)s->data)->score = 0;
-        s= s->next;
+    list_node *s = schools->head;
+    while (s) {
+        ((school *) s->data)->score = 0;
+        ((school *) s->data)->man_score = 0;
+        ((school *) s->data)->woman_score = 0;
+        s = s->next;
     }
 
     long current_id = 1;
@@ -251,15 +294,15 @@ void calculate_school_socre(list *projects, list *contacts, list *schools) {
 
 void calculate_man_projects_socre(list *projects, list *contacts, list *schools) {
 
-    if(!projects->head)
+    if (!projects->head)
         return;
-    long sum_id = project_get_id(*(project*)projects->head);
-    project_reset_id(*(project*)projects->head);
+    long sum_id = project_get_id(*(project *) projects->head);
+    project_reset_id(*(project *) projects->head);
 
-    list_node * s =  schools->head;
-    while(s){
-        ((school*)s->data)->score = 0;
-        s= s->next;
+    list_node *s = schools->head;
+    while (s) {
+        ((school *) s->data)->score = 0;
+        s = s->next;
     }
 
     long current_id = 1;
@@ -305,20 +348,20 @@ void sort_man_project_by_score_no_input(long pid, list *projects, list *contacts
     for (int i = 100; i >= 0; --i) {
         if ((sort_bucket + i)->head) {
 
-            stack_node * sn = (sort_bucket + i)->head;
+            stack_node *sn = (sort_bucket + i)->head;
 
 
             while (sn) {
 
-                if(sum>0 && i!=0){
+                if (sum > 0 && i != 0) {
                     list_node *s = schools->head;
 
 
-                    while(s){
-                        if(((school*)s->data)->id == ((contact *) sn->data)->sid){
-                            if(sum == 3)((school*)s->data)->score+=5;
-                            if(sum == 2)((school*)s->data)->score+=3;
-                            if(sum == 1)((school*)s->data)->score+=2;
+                    while (s) {
+                        if (((school *) s->data)->id == ((contact *) sn->data)->sid) {
+                            if (sum == 3)((school *) s->data)->score += 5;
+                            if (sum == 2)((school *) s->data)->score += 3;
+                            if (sum == 1)((school *) s->data)->score += 2;
                         }
                         s = s->next;
                     }
