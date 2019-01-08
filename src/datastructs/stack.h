@@ -1,6 +1,11 @@
-//
-// Created by moss on 1/2/19.
-//
+/**
+ * @description  C语言泛型栈 C language generic stack
+ * @copyright    2019 moss@nodie.ink
+ * @version      1.0.0
+ * @author       莫斯莫斯 mossnodie
+ * @file         stack.h
+ * @date         2019-01-06
+ */
 
 #ifndef GAMES_SCORE_STATISTICS_STACK_H
 #define GAMES_SCORE_STATISTICS_STACK_H
