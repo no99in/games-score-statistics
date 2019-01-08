@@ -1,5 +1,5 @@
 /**
- * @description  纯C语言实现的字符串 C language file function
+ * @description  C语言泛型链表 C language generic list
  * @copyright    2019 moss@nodie.ink
  * @version      1.0.0
  * @author       莫斯莫斯 mossnodie
@@ -27,9 +27,9 @@ STATUS _list_back_push(list *_self, void *data) {
     /*return _list_insert(_self, data, _list_get(_self->length));*/
     if (!_self->head) {
         list_node *pn = (list_node *) malloc(sizeof(list_node));
-        if (pn) return OVERFLOW;
+        if (!pn) return OVERFLOW;
         pn->data = malloc(_self->data_size);
-        if (pn->data) return OVERFLOW;
+        if (!pn->data) return OVERFLOW;
         pn->next = NULL;
         memcpy(pn->data, data, _self->data_size);
         _self->head = pn;
@@ -37,9 +37,9 @@ STATUS _list_back_push(list *_self, void *data) {
         return SUCCESS;
     }
     list_node *pn = (list_node *) malloc(sizeof(list_node));
-    if (pn) return OVERFLOW;
+    if (!pn) return OVERFLOW;
     pn->data = malloc(_self->data_size);
-    if (pn->data) return OVERFLOW;
+    if (!pn->data) return OVERFLOW;
     pn->next = NULL;
     memcpy(pn->data, data, _self->data_size);
     list_node *ln = _self->head;

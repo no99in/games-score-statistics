@@ -1,5 +1,5 @@
 /**
- * @description  纯C语言实现的字符串 C language file function
+ * @description  C语言泛型链表 C language generic list
  * @copyright    2019 moss@nodie.ink
  * @version      1.0.0
  * @author       莫斯莫斯 mossnodie
@@ -11,7 +11,6 @@
 #define GAMES_SCORE_STATISTICS_LIST_H
 
 #include "../../lib/stdhead.h"
-
 
 typedef struct list_node {
     void *data;
@@ -35,6 +34,5 @@ extern void *_list_get(list _self, int i);
 extern STATUS _list_remove(list *_self, int i);
 
 extern STATUS _list_insert(list *_self, void *data, int i);
-
 
 #endif //GAMES_SCORE_STATISTICS_LIST_H
