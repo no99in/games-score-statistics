@@ -57,7 +57,7 @@ extern void service_menu(list *schools, list *projects, list *contacts) {
                 output_school_info(schools);
                 break;
             case 3:
-                output_project_info(projects);
+                output_project_rank(1,projects,contacts,schools);
                 break;
             case 4:
 

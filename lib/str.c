@@ -84,7 +84,7 @@ str _str_long_to_str(long num) {
     return res;
 }
 
-str _str_int_to_str(long num) {
+str _str_int_to_str(int num) {
 
     char *t = (char *) malloc(sizeof(char) * 10);
 

@@ -19,6 +19,10 @@ extern void sort_project_by_score(long pid, list *projects, list *contacts,list 
 
 extern void calculate_school_socre( list *projects, list *contacts,list *schools);
 
+extern void calculate_man_projects_socre(list *projects, list *contacts, list *schools);
+
+extern void sort_man_project_by_score_no_input(long pid, list *projects, list *contacts, list *schools);
+
 extern void sort_woman_project_by_score(list *projects, list *contacts);
 
 extern void sort_school_by_score(list *projects, list *contacts);
