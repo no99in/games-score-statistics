@@ -12,10 +12,10 @@
 #include "stdhead.h"
 
 /**
- * @param length 字符串的长度
- * @param ch     指向字符串的指针
- * @param str    字符串类
- * @param p_str  字符串类型指针
+ * @param length 字符串的长度     Length of str
+ * @param ch     指向字符串的指针  Pointer to char*
+ * @param str    字符串类         My str class
+ * @param p_str  字符串类型指针    Pointer to str
  */
 typedef struct str {
     char *ch;
@@ -45,10 +45,26 @@ extern int _str_length(str s);
  */
 extern STATUS _str_compare(str s1, str s2);
 
+/**
+ * @description 连接两个字符串 connect two str to t
+ * @param       t  赋值字符串 Assigned str
+ * @param       s1 字符串 1 str 1
+ * @param       s2 字符串 2 str 2
+ * @return      OK ERROR OVERFLOW
+ */
 extern STATUS _str_concat(str *t, str s1, str s2);
 
+/**
+ * @description 将s赋值给t Assign s to t
+ * @param       t 复制字符串 Copy str t
+ * @param       s 被复制字符串 Copied str s
+ * @return      OK ERROR OVERFLOW
+ */
 extern STATUS _str_copy(str *t, str *s);
 
+/**
+ * @description 字符串与整形数据的相互转换 Conversion of strings and shaped data 下同 Same as below
+ */
 extern str _str_long_to_str(long num);
 
 extern str _str_int_to_str(int num);

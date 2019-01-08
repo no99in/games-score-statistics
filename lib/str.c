@@ -55,14 +55,14 @@ int _str_compare(str s1, str s2) {
 }
 
 STATUS _str_concat(str *t, str s1, str s2) {
-    // 声明pt
+    // 声明pt Statement pt
     p_str pt = (p_str) malloc(sizeof(str));
-    if(!pt)
+    if (!pt)
         return OVERFLOW;
     pt->ch = (char *) malloc(sizeof(char) * (s1.length + s2.length));
-    if(!pt->ch)
+    if (!pt->ch)
         return OVERFLOW;
-    // 赋值pt
+    // 赋值pt assign for pt
     pt->length = s1.length + s2.length;
     for (int i = 0; i < s1.length; i++) {
         (pt->ch)[i] = (s1.ch)[i];
@@ -70,10 +70,10 @@ STATUS _str_concat(str *t, str s1, str s2) {
     for (int i = s1.length; i < s2.length + s1.length; i++) {
         (pt->ch)[i] = (s2.ch)[i - s1.length];
     }
-    // pt赋值给t
+    // pt赋值给t assign pt for t
     memcpy(t, pt, sizeof(str));
     free(pt);
-    return  SUCCESS;
+    return SUCCESS;
 }
 
 str _str_long_to_str(long num) {
@@ -85,49 +85,33 @@ str _str_long_to_str(long num) {
 }
 
 str _str_int_to_str(int num) {
-
     char *t = (char *) malloc(sizeof(char) * 10);
-
     sprintf(t, "%d", num);
-
     str res;
-
     _str_assign(&res, t);
-
     return res;
 }
 
 extern STATUS _str_copy(str *t, str *s) {
-
     p_str pt = (p_str) malloc(sizeof(str));
     pt->ch = (char *) malloc(sizeof(char) * s->length);
     int length = s->length;
     while (--length >= 0) {
         pt->ch[length] = s->ch[length];
-    }// 将 s 赋值给 pt->ch
+    }// 将 s 赋值给 pt->ch  assign s for pt->ch
     pt->length = s->length;
-
     *t = *pt;
-
     free(pt);
-
     return SUCCESS;
-
 }
 
 
-extern long _str_str_to_long(char* un_num){
-
-    char* END = NULL;
-
-    return strtol(un_num,&END,10);
-
+extern long _str_str_to_long(char *un_num) {
+    char *END = NULL;
+    return strtol(un_num, &END, 10);
 }
 
-extern int _str_str_to_int(char*  un_num){
-
-    char* END = NULL;
-
-    return strtol(un_num,&END,10);
-
+extern int _str_str_to_int(char *un_num) {
+    char *END = NULL;
+    return strtol(un_num, &END, 10);
 }
