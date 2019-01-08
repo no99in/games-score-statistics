@@ -1,10 +1,5 @@
-//
-// Created by sungwx on 2018/12/26.
-//
-
 #ifndef GAMES_SCORE_STATISTICS_UI_SETTING_H
 #define GAMES_SCORE_STATISTICS_UI_SETTING_H
-
 
 #define DISPLAY_WIDTH 70;
 
