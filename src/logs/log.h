@@ -1,6 +1,11 @@
-//
-// Created by mossnodie on 12/24/18.
-//
+/**
+ * @description  系统日志函数 System log function
+ * @copyright    2019 moss@nodie.ink
+ * @version      1.0.0
+ * @author       莫斯莫斯 mossnodie
+ * @file         log.h
+ * @date         2019-01-06
+ */
 
 #ifndef GAMES_SCORE_STATISTICS_LOG_H
 #define GAMES_SCORE_STATISTICS_LOG_H
@@ -11,7 +16,7 @@
 typedef struct _log {
     int log_type;
     char *log_information;
-} _log, *_plog;
+} _log, *_p_log;
 
 #define  _LOG_OFF     0
 #define  _LOG_INFO    1
