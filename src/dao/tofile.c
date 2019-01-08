@@ -1,5 +1,5 @@
 /**
- * @description  纯C语言实现的字符串 C language file function
+ * @description  C到文件函数 C to file functionn
  * @copyright    2019 moss@nodie.ink
  * @version      1.0.0
  * @author       莫斯莫斯 mossnodie
