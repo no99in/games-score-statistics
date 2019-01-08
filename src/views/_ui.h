@@ -1,6 +1,12 @@
-//
-// Created by mossnodie on 12/23/18.
-//
+/**
+ * @description  视图层 Views
+ * @copyright    2019 moss@nodie.ink
+ * @version      1.0.0
+ * @author       莫斯莫斯 mossnodie
+ * @file         _ui.h
+ * @date         2019-01-06
+ */
+
 #ifndef GAMES_SCORE_STATISTICS_UI_H
 #define GAMES_SCORE_STATISTICS_UI_H
 
@@ -16,7 +22,6 @@
 #define _UI_DIV      '|'
 #define _UI_POINT    '+'
 #define _UI_LINE     '-'
-
 
 typedef struct _ui {
     char *null_str;
@@ -42,7 +47,6 @@ static void _ui_print_ln(_ui _self);
 
 static void _ui_print_line(_ui _self, int length);
 
-
 /**
  * @desc   初始化一个ui实例
  * @param  待初始化的ui声明
@@ -58,7 +62,6 @@ extern void _new_ui(_ui *self);
  */
 extern _ui _get_ui_instance();
 
-
 /**
  * @desc  print
  *+-------------------------------------+
@@ -70,7 +73,6 @@ extern _ui _get_ui_instance();
  */
 extern void _ui_print_head(_ui _self, int length);
 
-
 /**
  * @desc  print
  *|           F U N S T R               |
@@ -80,7 +82,6 @@ extern void _ui_print_head(_ui _self, int length);
  * @return void
  */
 extern void _ui_print_fun(_ui _self, int length);
-
 
 /**
  * @desc  print
