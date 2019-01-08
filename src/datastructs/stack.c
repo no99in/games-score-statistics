@@ -46,9 +46,9 @@ extern Status _stack_head_push(stack *_self, void *data) {
 
 extern void *_stack_head_pop(stack *_self) {
 
-    void *psnd = malloc(_self->data_size);
+    void *p_snd = malloc(_self->data_size);
 
-    memcpy(psnd, _self->head->data, _self->data_size);
+    memcpy(p_snd, _self->head->data, _self->data_size);
 
     if (!_self->head->next) {
 
@@ -64,7 +64,7 @@ extern void *_stack_head_pop(stack *_self) {
 
     }
 
-    return psnd;
+    return p_snd;
 
 }
 

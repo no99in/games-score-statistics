@@ -23,6 +23,8 @@ school input_school_info() {
     _str_copy(&s->name, &school_name);
     s->id = school_get_id(*s);
 
+    s->score = 0;
+
     free(input);
 
     return *s;

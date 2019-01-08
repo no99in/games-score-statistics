@@ -17,7 +17,7 @@
 
 extern void sort_project_by_score(long pid, list *projects, list *contacts,list *school) ;
 
-extern void find_project(long pid,long sid, list *contacts);
+extern void calculate_school_socre( list *projects, list *contacts,list *schools);
 
 extern void sort_woman_project_by_score(list *projects, list *contacts);
 

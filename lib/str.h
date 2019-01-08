@@ -31,17 +31,17 @@ typedef struct str {
 extern STATUS _str_assign(str *t, char *s);
 
 /**
- * @description 字符串的长度
- * @param       s 字符串
- * @return      int 字符串的长度
+ * @description 字符串的长度 length of str
+ * @param       s str s
+ * @return      int 字符串的长度 length of str
  */
 extern int _str_length(str s);
 
 /**
- * @description 比较两个字符串的大小
- * @param       s1 字符串 1
- * @param       s2 字符串 2
- * @return      +(s1大),0(s1与s2相等),-(s2大)
+ * @description 比较两个字符串的大小 compare the size of two str
+ * @param       s1 字符串 1 str 1
+ * @param       s2 字符串 2 str 2
+ * @return      +(s1大),0(s1与s2相等),-(s2大) +(s1),0(equal),-(s2)
  */
 extern STATUS _str_compare(str s1, str s2);
 

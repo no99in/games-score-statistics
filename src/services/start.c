@@ -59,7 +59,7 @@ extern void service_menu(list *schools, list *projects, list *contacts) {
                 output_project_info(projects);
                 break;
             case 4:
-//                test(p, c, schools);
+                test(projects, contacts, schools);
                 break;
             case 5:
                 break;
