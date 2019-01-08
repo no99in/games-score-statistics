@@ -16,7 +16,7 @@
 Git clone https://github.com/mossnodie/games-score-statistics.git
 ```
 
-![image003.png](https://i.loli.net/2019/01/09/5c34f8984be1b.png)
+![](https://i.loli.net/2019/01/09/5c34f8984be1b.png)
 
 ## Cygwin
 
@@ -25,7 +25,7 @@ This program is tested under cygwin and compiled by cmake (3.6.2). The modified 
 
 ![](https://i.loli.net/2019/01/09/5c34f8a84d6fc.png)
 
-![cygwin](https://www.cygwin.com/)
+[cygwin](https://www.cygwin.com/)
 
 ## cmake+make
 
@@ -50,7 +50,7 @@ Wait
 在项目目录下可以找到 `games-score-statistics.exe`
 You can find `games-score-statistics.exe` in the project directory
 
-![image007.png](https://i.loli.net/2019/01/09/5c34f8a891a3d.png)
+![](https://i.loli.net/2019/01/09/5c34f8a891a3d.png)
 
 ## Enjoy
 
