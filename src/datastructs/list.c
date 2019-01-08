@@ -48,7 +48,7 @@ STATUS _list_back_push(list *_self, void *data) {
 
 }
 
-extern void *_list_get(list _self, int i) {
+void *_list_get(list _self, int i) {
 
     if (i > _self.length || i <= 0) {
         return NULL;
@@ -69,7 +69,7 @@ extern void *_list_get(list _self, int i) {
 
 }
 
-extern STATUS _list_remove(list *_self, int i) {
+STATUS _list_remove(list *_self, int i) {
 
     if (i > _self->length || i <= 0) {
         return ERROR;
