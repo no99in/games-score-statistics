@@ -92,7 +92,7 @@ str _str_int_to_str(int num) {
     return res;
 }
 
-extern STATUS _str_copy(str *t, str *s) {
+STATUS _str_copy(str *t, str *s) {
     p_str pt = (p_str) malloc(sizeof(str));
     pt->ch = (char *) malloc(sizeof(char) * s->length);
     int length = s->length;
@@ -106,12 +106,12 @@ extern STATUS _str_copy(str *t, str *s) {
 }
 
 
-extern long _str_str_to_long(char *un_num) {
+long _str_str_to_long(char *un_num) {
     char *END = NULL;
     return strtol(un_num, &END, 10);
 }
 
-extern int _str_str_to_int(char *un_num) {
+int _str_str_to_int(char *un_num) {
     char *END = NULL;
     return strtol(un_num, &END, 10);
 }
