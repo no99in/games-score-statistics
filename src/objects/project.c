@@ -1,9 +1,4 @@
-//
-// Created by moss on 1/1/19.
-//
-
 #include "project.h"
-
 
 long _project_id = 1;
 

@@ -1,6 +1,11 @@
-//
-// Created by moss on 1/1/19.
-//
+/**
+ * @description  业务对象 BO
+ * @copyright    2019 moss@nodie.ink
+ * @version      1.0.0
+ * @author       莫斯莫斯 mossnodie
+ * @file         project.h
+ * @date         2019-01-06
+ */
 
 #ifndef GAMES_SCORE_STATISTICS_PROJECT_H
 #define GAMES_SCORE_STATISTICS_PROJECT_H
