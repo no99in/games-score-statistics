@@ -46,20 +46,21 @@ extern void service_menu(list *schools, list *projects, list *contacts) {
         show_menu();
 
         scanf("%s", scan);
-
-        switch (atoi(scan)) {
+        char * END;
+        switch (strtol(scan,&END,10)) {
             case 1:
                 scanf("%s", scan);
-                _input(atoi(scan), schools, contacts, projects);
+                _input(strtol(scan,&END,10), schools, contacts, projects);
                 break;
             case 2:
+                calculate_school_socre(projects, contacts, schools);
                 output_school_info(schools);
                 break;
             case 3:
                 output_project_info(projects);
                 break;
             case 4:
-                test(projects, contacts, schools);
+
                 break;
             case 5:
                 break;

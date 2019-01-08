@@ -15,12 +15,10 @@ school input_school_info() {
     _ui_print_custom_head(ui, "请输入学校名称\0", display_width);
 
     scanf("%s", input);
-
-    str school_name;
-    _str_assign(&school_name, input);
-
     school *s = (p_school) malloc(sizeof(school));
-    _str_copy(&s->name, &school_name);
+
+    _str_assign(&s->name, input);
+
     s->id = school_get_id(*s);
 
     s->score = 0;
@@ -45,8 +43,7 @@ project input_project_info() {
 
     scanf("%s", input);
 
-    str project_name;
-    _str_assign(&project_name, input);
+    _str_assign(&p->name, input);
 
     system("clear");
 
@@ -81,7 +78,6 @@ project input_project_info() {
         _str_compare(input_project_type, project_type_woman2) == 0 ||
         _str_compare(input_project_type, project_type_woman3) == 0) { project_type = 0; }
 
-    _str_copy(&p->name, &project_name);
     p->type = project_type;
     p->id = project_get_id(*p);
 

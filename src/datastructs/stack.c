@@ -38,7 +38,7 @@ extern Status _stack_head_push(stack *_self, void *data) {
     } else {
 
         psn->next = _self->head;
-        _self->head = psn->next;
+        _self->head = psn;
 
     }
 
