@@ -28,7 +28,7 @@ typedef struct str {
  * @param       s s的指针 pointer s
  * @return      OK ERROR OVERFLOW
  */
-extern STATUS _str_assign(str *t, const char *s);
+extern STATUS _str_assign(str *t, char *s);
 
 /**
  * @description 字符串的长度

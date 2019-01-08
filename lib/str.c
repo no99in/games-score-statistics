@@ -8,7 +8,7 @@
  */
 #include "str.h"
 
-STATUS _str_assign(str *t, const char *s) {
+STATUS _str_assign(str *t, char *s) {
     // NULL处理 to deal with NULL
     if (!s) {
         t->ch = NULL;
@@ -30,12 +30,12 @@ STATUS _str_assign(str *t, const char *s) {
     if (!ps->ch)
         return OVERFLOW;
     // 为t赋值 assign for t
+    ps->length = length;
     for (c = s; length >= 0; --length) {
         (ps->ch)[length] = c[length];
     }
-    ps->length = length;
     // *t = *ps
-    memset(t, ps, sizeof(str));
+    memcpy(t, ps, sizeof(str));
     free(ps);
     return SUCCESS;
 }
@@ -71,9 +71,9 @@ STATUS _str_concat(str *t, str s1, str s2) {
         (pt->ch)[i] = (s2.ch)[i - s1.length];
     }
     // pt赋值给t
-    memset(t, pt, sizeof(str));
+    memcpy(t, pt, sizeof(str));
     free(pt);
-    return SUCCESS;
+    return  SUCCESS;
 }
 
 str _str_long_to_str(long num) {

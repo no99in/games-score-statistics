@@ -16,16 +16,16 @@ void output_school_info(list *schools) {
     _ui_print_custom_odd_fix(ui, "得分\0", display_width, 3);
     _ui_print_custom_row_end(ui, display_width);
 
-    list_node *n = schools->head;
+    list_node *ln = schools->head;
 
-    while (n) {
+    while (ln) {
 
-        _ui_print_custom_row_pre(ui, ((school *) n->data)->name.ch, display_width, 3);
-        _ui_print_custom_row_sub(ui, _str_long_to_str(((school *) n->data)->id).ch, display_width, 3);
-        _ui_print_custom_odd_fix(ui, _str_long_to_str(((school *) n->data)->score).ch, display_width, 3);
+        _ui_print_custom_row_pre(ui, ((school *) ln->data)->name.ch, display_width, 3);
+        _ui_print_custom_row_sub(ui, _str_long_to_str(((school *) ln->data)->id).ch, display_width, 3);
+        _ui_print_custom_odd_fix(ui, _str_long_to_str(((school *) ln->data)->score).ch, display_width, 3);
         _ui_print_custom_row_end(ui, display_width);
 
-        n = n->next;
+        ln = ln->next;
 
     }
 

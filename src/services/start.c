@@ -37,7 +37,7 @@ int service_start() {
 
 }
 
-extern void service_menu(list *schools, list *p, list *c) {
+extern void service_menu(list *schools, list *projects, list *contacts) {
 
     char *scan = (char *) malloc(sizeof(char) * 5);
 
@@ -50,16 +50,16 @@ extern void service_menu(list *schools, list *p, list *c) {
         switch (atoi(scan)) {
             case 1:
                 scanf("%s", scan);
-                _input(atoi(scan), schools, c, p);
+                _input(atoi(scan), schools, contacts, projects);
                 break;
             case 2:
                 output_school_info(schools);
                 break;
             case 3:
-                output_project_info(p);
+                output_project_info(projects);
                 break;
             case 4:
-                test(p, c, schools);
+//                test(p, c, schools);
                 break;
             case 5:
                 break;

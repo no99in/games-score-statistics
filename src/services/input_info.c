@@ -148,14 +148,14 @@ contact input_contact_info(school s, project p, list *schools, list *projects, l
 }
 
 
-extern void _input(int times,list *schools, list *contacts, list *projects) {
+void _input(int times,list *schools, list *contacts, list *projects) {
 
     int i = times;
 
     while (i-- > 0) {
         school s = input_school_info();
         project p = input_project_info();
-        contact c = input_contact_info(s, p, schools, contacts, projects);
+        contact c = input_contact_info(s, p, schools, projects,contacts);
         if(c.pid == -1 && c.sid == -1)
             ++i;
         else
@@ -184,9 +184,10 @@ void input_update(list *schools, school *s, list *projects, project *p, list *co
 
     if (!flag)
         _list_head_push(schools, s);
-    else
+    else {
         s->id = ((school *) sn->data)->id;
-
+        school_reset_id(*s);
+    }
 
     list_node *pn = projects->head;
 
@@ -205,8 +206,11 @@ void input_update(list *schools, school *s, list *projects, project *p, list *co
 
     if (!flag)
         _list_head_push(projects, p);
-    else
-        p->id = ((school *) pn->data)->id;
+    else {
+        p->id = ((project *) pn->data)->id;
+        project_reset_id(*p);
+    }
+
 
     c->sid = s->id;
     c->pid = p->id;

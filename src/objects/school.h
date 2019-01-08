@@ -19,6 +19,8 @@ extern school create_school(school _self, long id, str name);
 
 extern long school_get_id(school _self);
 
+extern void school_reset_id(school _self);
+
 extern str school_get_name(school _self);
 
 extern void school_set_id(school _self, long id);

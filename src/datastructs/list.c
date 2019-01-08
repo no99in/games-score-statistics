@@ -86,9 +86,9 @@ extern Status _list_remove(list *_self, int i) {
             --_self->length;
             return OK;
 
-        } else if (_self->length == 0)  {
+        } else if (_self->length == 0) {
             return OK;
-        }else{
+        } else {
 
             _self->head = _self->head->next;
             free(n);
@@ -117,12 +117,11 @@ extern Status _list_remove(list *_self, int i) {
 Status _list_insert(list *_self, void *data, int i) {
 
     if (i == 1 && _self->length == 0) {
-        _self->head = (list_node *) malloc(sizeof(list_node));
+
         list_node *pn = (list_node *) malloc(sizeof(list_node));
         pn->data = malloc(_self->data_size);
         memcpy(pn->data, data, _self->data_size);
-        *_self->head = *pn;
-        free(pn);
+        _self->head = pn;
         _self->head->next = NULL;
         ++_self->length;
         return OK;
@@ -139,13 +138,10 @@ Status _list_insert(list *_self, void *data, int i) {
     memcpy(pn->data, data, _self->data_size);
 
     if (i == 1) {
-        _self->head = (list_node *) malloc(sizeof(list_node));
-        *_self->head = *pn;
-        *_self->head->next = *n;
-        free(pn);
+        pn->next = n;
+        _self->head = pn;
         ++_self->length;
         return OK;
-
     }
 
     while (i - 2 > 0) {
