@@ -17,7 +17,7 @@ int service_start() {
     list projects;
     _new_list(&projects, sizeof(project));
     _file_to_schools(&schools);
-    _files_to_project(&projects);
+    _file_to_projects(&projects);
     _file_to_contacts(&contacts);
     service_menu(&schools, &projects, &contacts);
     return 0;
@@ -35,15 +35,15 @@ void service_menu(list *schools, list *projects, list *contacts) {
                 _input(strtol(scan, &END, 10), schools, contacts, projects);
                 break;
             case 2:
-                calculate_school_socre(projects, contacts, schools);
+                calculate_school_score(projects, contacts, schools);
                 output_school_info(schools);
                 break;
             case 3:
-                calculate_school_socre(projects, contacts, schools);
+                calculate_school_score(projects, contacts, schools);
                 output_man_project_rank(schools);
                 break;
             case 4:
-                calculate_school_socre(projects, contacts, schools);
+                calculate_school_score(projects, contacts, schools);
                 output_woman_project_rank(schools);
                 break;
             case 6:

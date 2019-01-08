@@ -1,7 +1,11 @@
-//
-// Created by moss on 1/2/19.
-//
-
+/**
+ * @description  业务启动函数 BIZ
+ * @copyright    2019 moss@nodie.ink
+ * @version      1.0.0
+ * @author       莫斯莫斯 mossnodie
+ * @file         input.h
+ * @date         2019-01-06
+ */
 #ifndef GAMES_SCORE_STATISTICS_INPUT_INFO_H
 #define GAMES_SCORE_STATISTICS_INPUT_INFO_H
 

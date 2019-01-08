@@ -1,9 +1,4 @@
-//
-// Created by moss on 1/2/19.
-//
-
 #include "output.h"
-
 
 void output_school_info(list *schools) {
 
@@ -108,7 +103,6 @@ void output_school_rank(list *schools) {
     getchar();
 
 }
-
 
 void output_project_info(list *projects) {
 
