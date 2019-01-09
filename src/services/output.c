@@ -5,7 +5,7 @@ void output_school_info(list *schools) {
     _ui ui = _get_ui_instance();
     int display_width = DISPLAY_WIDTH;
     system("clear");
-    _ui_print_custom_head(ui, "全部学校信息\0", display_width);
+    _ui_print_custom_head(ui, "学校排名信息\0", display_width);
     _ui_print_custom_row_pre(ui, "名称\0", display_width, 3);
     _ui_print_custom_row_sub(ui, "编号\0", display_width, 3);
     _ui_print_custom_odd_fix(ui, "得分\0", display_width, 3);
@@ -70,7 +70,7 @@ void output_school_rank(list *schools) {
     for (int i = 0; i < schools->length - 1; i++) {
         flag = 0;
         while (ln->next) {
-            if (((school *) ln->data)->score < ((school *) ln->next->data)->score) {
+            if (((school *) ln->data)->id > ((school *) ln->next->data)->id) {
                 flag = 1;
                 void *p_data = malloc(schools->data_size);
                 memcpy(p_data, ln->data, schools->data_size);
@@ -116,6 +116,27 @@ void output_project_info(list *projects) {
     _ui_print_custom_row_sub(ui, "类型\0", display_width, 3);
     _ui_print_custom_odd_fix(ui, "编号\0", display_width, 3);
     _ui_print_custom_row_end(ui, display_width);
+
+    list_node *ln = projects->head;
+
+    int flag = 0;
+    for (int i = 0; i < projects->length - 1; i++) {
+        flag = 0;
+        while (ln->next) {
+            if (((project *) ln->data)->id > ((project *) ln->next->data)->id) {
+                flag = 1;
+                void *p_data = malloc(projects->data_size);
+                memcpy(p_data, ln->data, projects->data_size);
+                memcpy(ln->data, ln->next->data, projects->data_size);
+                memcpy(ln->next->data, p_data, projects->data_size);
+                free(p_data);
+            }
+            ln = ln->next;
+        }
+        if (!flag)
+            break;
+        ln = projects->head;
+    }
 
     list_node *n = projects->head;
 
@@ -244,12 +265,6 @@ void output_project_rank(long pid, list *projects, list *contacts, list *schools
     _ui ui = _get_ui_instance();
     int display_width = DISPLAY_WIDTH;
 
-    _ui_print_custom_head(ui, "项目成绩\0", display_width);
-    _ui_print_custom_row_pre(ui, "学校编号\0", display_width, 3);
-    _ui_print_custom_row_sub(ui, "学校名称\0", display_width, 3);
-    _ui_print_custom_odd_fix(ui, "项目成绩\0", display_width, 3);
-    _ui_print_custom_row_end(ui, display_width);
-
     list_node *ln = projects->head;
 
     while (ln) {
@@ -260,6 +275,27 @@ void output_project_rank(long pid, list *projects, list *contacts, list *schools
         ln = ln->next;
     }
     list_node *p = ln;
+
+    char *a;
+    if (p)
+        if (((project *) p->data)->type == 1)
+            a = "男子\0";
+        else
+            a = "女子\0";
+    if (!p) return;
+    char *b = ((project *) p->data)->name.ch;
+    str sa;
+    _str_assign(&sa, a);
+    str sb;
+    _str_assign(&sb, b);
+    str sc;
+    _str_concat(&sc, sa, sb);
+    _ui_print_custom_head(ui, sc.ch, display_width);
+    _ui_print_custom_row_pre(ui, "学校编号\0", display_width, 3);
+    _ui_print_custom_row_sub(ui, "学校名称\0", display_width, 3);
+    _ui_print_custom_odd_fix(ui, "项目成绩\0", display_width, 3);
+    _ui_print_custom_row_end(ui, display_width);
+
 
     ln = contacts->head;
 
@@ -301,12 +337,6 @@ void output_school_info_by_num(long sid, list *schools, list *contacts, list *pr
     _ui ui = _get_ui_instance();
     int display_width = DISPLAY_WIDTH;
 
-    _ui_print_custom_head(ui, "项目成绩\0", display_width);
-    _ui_print_custom_row_pre(ui, "项目名称\0", display_width, 3);
-    _ui_print_custom_row_sub(ui, "项目类型\0", display_width, 3);
-    _ui_print_custom_odd_fix(ui, "项目成绩\0", display_width, 3);
-    _ui_print_custom_row_end(ui, display_width);
-
     list_node *ln = schools->head;
 
     while (ln) {
@@ -316,6 +346,15 @@ void output_school_info_by_num(long sid, list *schools, list *contacts, list *pr
 
         ln = ln->next;
     }
+
+    if (ln)
+        _ui_print_custom_head(ui, ((school *) ln->data)->name.ch, display_width);
+    _ui_print_custom_row_pre(ui, "项目名称\0", display_width, 3);
+    _ui_print_custom_row_sub(ui, "项目类型\0", display_width, 3);
+    _ui_print_custom_odd_fix(ui, "项目成绩\0", display_width, 3);
+    _ui_print_custom_row_end(ui, display_width);
+
+
     list_node *s = ln;
 
     ln = contacts->head;
@@ -337,7 +376,7 @@ void output_school_info_by_num(long sid, list *schools, list *contacts, list *pr
             if (p)
                 _ui_print_custom_row_pre(ui, ((project *) p->data)->name.ch, display_width, 3);
             if (p)
-                _ui_print_custom_row_sub(ui, _str_int_to_str(((project *) p->data)->type).ch, display_width, 3);
+                _ui_print_custom_row_sub(ui, ((project *) p->data)->type ? "女子" : "男子", display_width, 3);
             if (p)
                 _ui_print_custom_odd_fix(ui, _str_int_to_str(((contact *) ln->data)->score).ch, display_width, 3);
             if (p)
@@ -359,7 +398,7 @@ void output_man_project_rank(list *schools) {
     _ui ui = _get_ui_instance();
     int display_width = DISPLAY_WIDTH;
     system("clear");
-    _ui_print_custom_head(ui, "全部学校信息\0", display_width);
+    _ui_print_custom_head(ui, "男子团体排名\0", display_width);
     _ui_print_custom_row_pre(ui, "名称\0", display_width, 3);
     _ui_print_custom_row_sub(ui, "编号\0", display_width, 3);
     _ui_print_custom_odd_fix(ui, "得分\0", display_width, 3);
@@ -412,7 +451,7 @@ void output_woman_project_rank(list *schools) {
     _ui ui = _get_ui_instance();
     int display_width = DISPLAY_WIDTH;
     system("clear");
-    _ui_print_custom_head(ui, "全部学校信息\0", display_width);
+    _ui_print_custom_head(ui, "女子团体排名\0", display_width);
     _ui_print_custom_row_pre(ui, "名称\0", display_width, 3);
     _ui_print_custom_row_sub(ui, "编号\0", display_width, 3);
     _ui_print_custom_odd_fix(ui, "得分\0", display_width, 3);
