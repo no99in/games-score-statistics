@@ -376,7 +376,7 @@ void output_school_info_by_num(long sid, list *schools, list *contacts, list *pr
             if (p)
                 _ui_print_custom_row_pre(ui, ((project *) p->data)->name.ch, display_width, 3);
             if (p)
-                _ui_print_custom_row_sub(ui, ((project *) p->data)->type ? "女子" : "男子", display_width, 3);
+                _ui_print_custom_row_sub(ui, ((project *) p->data)->type ? "男子\0" : "女子\0", display_width, 3);
             if (p)
                 _ui_print_custom_odd_fix(ui, _str_int_to_str(((contact *) ln->data)->score).ch, display_width, 3);
             if (p)

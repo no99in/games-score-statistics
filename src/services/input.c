@@ -115,8 +115,11 @@ void _input(int times, list *schools, list *contacts, list *projects) {
         school s = input_school_info();
         project p = input_project_info();
         contact c = input_contact_info(s, p, schools, projects, contacts);
-        if (c.pid == -1 && c.sid == -1)
+        if (c.pid == -1 && c.sid == -1) {
             ++i;
+            project_reset_id(p);
+            school_reset_id(s);
+        }
         else
             input_update(schools, &s, projects, &p, contacts, &c);
     }

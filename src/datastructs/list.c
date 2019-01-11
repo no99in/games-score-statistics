@@ -11,6 +11,7 @@
 
 STATUS _new_list(list *_self, int data_size) {
     p_list pl = (p_list) malloc(sizeof(list));
+    if (!pl) return OVERFLOW;
     pl->data_size = data_size;
     pl->length = 0;
     pl->head = NULL;

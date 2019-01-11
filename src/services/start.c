@@ -7,7 +7,7 @@ int service_start() {
     // create ui 创建UI
     _ui ui;
     _new_ui(&ui);
-    // create school-list 创建 school-list
+    // create school-list 创建 school-lists
     list schools;
     _new_list(&schools, sizeof(school));
     // create contacts-list 创建 contact-list
@@ -53,16 +53,30 @@ void service_menu(list *schools, list *projects, list *contacts) {
                 system("clear");
                 _ui_print_custom_head(ui, "请输入查询项目的编号\0", display_width);
                 scanf("%s", scan);
-                sort_school_by_score(contacts);
-                system("clear");
-                output_project_rank(strtol(scan, &END, 10), projects, contacts, schools);
+                if(strtol(scan, &END, 10)>projects->length){
+                    system("clear");
+                    _ui_print_custom_head(ui, "项目不存在请查询项目表\0", display_width);
+                    getchar();
+                    getchar();
+                }else{
+
+                    sort_school_by_score(contacts);
+                    system("clear");
+                    output_project_rank(strtol(scan, &END, 10), projects, contacts, schools);
+                }
                 break;
             case 5:
                 system("clear");
                 _ui_print_custom_head(ui, "请输入查询学校的编号\0", display_width);
                 scanf("%s", scan);
                 system("clear");
-                output_school_info_by_num(strtol(scan, &END, 10), schools, contacts, projects);
+                if(strtol(scan, &END, 10)>=schools->length){
+                    _ui_print_custom_head(ui, "学校不存在请查询学校表\0", display_width);
+                    getchar();
+                    getchar();
+                }else {
+                    output_school_info_by_num(strtol(scan, &END, 10), schools, contacts, projects);
+                }
                 break;
             case 7:
                 output_school_rank(schools);
